@@ -1,8 +1,18 @@
 import React from 'react';
+import './App.css';
+import Desktop from './components/desktop';
 
 function App() {
   return (
-<h1>Hello</h1>
+    <div>
+      <Desktop />
+
+      <footer>
+        <div>
+          <p>.</p>
+        </div>
+      </footer>
+    </div>
   );
 }
 
