@@ -1,37 +1,34 @@
 import React, { useState } from 'react';
-import myComputer from '../media/my_computer.png';
-import Window from './Window.jsx';
+import ToDoIcon from '../../../media/bin.png';
+import Window from '../../Window';
+import ToDoList from './ToDoList';
 
-function MyComputerApp() {
+function ToDoApp(props) {
+  // Open & close ToDoApp window
   const [showWindow, setShowWindow] = useState('none');
 
   const handleCloseWindow = () => setShowWindow('none');
-  const handleShowWindow = () => {
-    setShowWindow('block');
-  };
-
+  const handleShowWindow = () => setShowWindow('block');
   return (
     <div>
       <div className="iconApp">
         <img
           onClick={handleShowWindow}
           className="icon"
-          src={myComputer}
+          src={ToDoIcon}
           alt=""
         />
         <span style={{ fontFamily: 'Pixelated MS Sans Serif' }}>
-          My Computer
+          ToDo App
         </span>
       </div>
       <Window
         showWindow={showWindow}
         onHideWindow={handleCloseWindow}
-        windowTitle="Error"
-        windowWidth="30vh"
-        windowHeight="10vh"
-        windowContent="Access denied: Property of Bill Gates"
+        windowTitle="ToDo App"
+        windowContent={<ToDoList />}
       />
     </div>
   );
 }
-export default MyComputerApp;
+export default ToDoApp;

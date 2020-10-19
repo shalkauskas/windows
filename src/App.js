@@ -1,17 +1,13 @@
 import React from 'react';
 import './App.css';
-import Desktop from './components/desktop';
+import Desktop from './components/Desktop.jsx';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <div>
       <Desktop />
-
-      <footer>
-        <div>
-          <p>.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

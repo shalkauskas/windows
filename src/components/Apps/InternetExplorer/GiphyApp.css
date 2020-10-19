@@ -1,0 +1,19 @@
+.GiphyApp {
+  text-align: center;
+}
+.giflist {
+  max-height: 60vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.search-button {
+  margin: 1rem;
+}
+input {
+  padding: 5px;
+  width: 8rem;
+}
+.search {
+  margin-top: 25%;
+  margin-left: 10%;
+}
