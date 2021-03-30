@@ -1,31 +1,41 @@
 import React from 'react';
+import { GlobalContext } from '../App';
 
 function Window(props) {
+  const [, dispatch] = React.useContext(GlobalContext);
+  const handleClose = () => {
+    dispatch({ type: props.case, payload: false });
+  };
   return (
     <div
-      class="window"
+      className="window"
       style={{
-        display: props.showWindow,
-        width: props.windowWidth,
-        height: props.windowHeight,
+        display: 'flex',
+        flexDirection: 'column',
+        minWidth: '50vh',
+        minHeight: '30vh',
+        width: props.width,
+        height: props.height,
         backgroundColor: props.backgroundColor,
         backgroundImage: `url(${props.backgroundImage})`,
+        backgroundSize: 'cover',
+        overflowY: 'hidden',
       }}
     >
-      <div class="title-bar">
-        <div class="title-bar-text">{props.windowTitle}</div>
-        <div class="title-bar-controls">
-          <button
-            onClick={props.onHideWindow}
-            aria-label="Close"
-          ></button>
+      <div className="title-bar">
+        <div className="title-bar-text">{props.windowTitle}</div>
+        <div className="title-bar-controls">
+          <button onClick={handleClose} aria-label="Close"></button>
         </div>
       </div>
-      <div class="window-body">
-        <p>
-          {props.windowContent}
-          {props.errorMessage}
-        </p>
+      <div
+        className="window-body"
+        style={{
+          margin: props.margin && props.margin,
+          flexGrow: '1',
+        }}
+      >
+        {props.children}
       </div>
     </div>
   );

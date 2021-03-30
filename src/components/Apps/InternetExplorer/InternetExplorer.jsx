@@ -1,39 +1,27 @@
-import React, { useState } from 'react';
-import internetExplorer from '../../../media/internet_explorer.png';
+import React from 'react';
 import Window from '../../Window.jsx';
 import GiphyApp from './GiphyApp';
 import google from '../../../media/google.png';
+import { GlobalContext } from '../../../App';
 function InternetExplorerApp() {
-  const [showWindow, setShowWindow] = useState('none');
-
-  const handleCloseWindow = () => setShowWindow('none');
-  const handleShowWindow = () => setShowWindow('block');
+  const [state] = React.useContext(GlobalContext);
   return (
-    <div>
-      <div className="iconApp">
-        <img
-          id="internet-explorer"
-          onClick={handleShowWindow}
-          className="icon"
-          src={internetExplorer}
-          alt=""
-        />
-        <span style={{ fontFamily: 'Pixelated MS Sans Serif' }}>
-          Internet Explorer
-        </span>
-      </div>
-      <div>
-        <Window
-          showWindow={showWindow}
-          onHideWindow={handleCloseWindow}
-          windowTitle="Internet Explorer"
-          windowWidth="100vh"
-          windowHeight="95vh"
-          backgroundImage={google}
-          windowContent={<GiphyApp />}
-          backgroundColor="white"
-        />
-      </div>
+    <div
+      style={{
+        display: state.InternetExplorer.appOpen ? 'block' : 'none',
+      }}
+    >
+      <Window
+        windowTitle="Internet Explorer"
+        case="InternetExplorer"
+        width="75vw"
+        height="75vh"
+        backgroundImage={google}
+        backgroundColor="white"
+        margin="3px"
+      >
+        <GiphyApp />
+      </Window>
     </div>
   );
 }

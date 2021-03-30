@@ -1,34 +1,16 @@
-import React, { useState } from 'react';
-import ToDoIcon from '../../../media/bin.png';
+import React from 'react';
 import Window from '../../Window';
 import ToDoList from './ToDoList';
-
-function ToDoApp(props) {
-  // Open & close ToDoApp window
-  const [showWindow, setShowWindow] = useState('none');
-
-  const handleCloseWindow = () => setShowWindow('none');
-  const handleShowWindow = () => setShowWindow('block');
+import { GlobalContext } from '../../../App';
+export default function ToDoApp(props) {
+  const [state] = React.useContext(GlobalContext);
   return (
-    <div>
-      <div className="iconApp">
-        <img
-          onClick={handleShowWindow}
-          className="icon"
-          src={ToDoIcon}
-          alt=""
-        />
-        <span style={{ fontFamily: 'Pixelated MS Sans Serif' }}>
-          ToDo App
-        </span>
-      </div>
-      <Window
-        showWindow={showWindow}
-        onHideWindow={handleCloseWindow}
-        windowTitle="ToDo App"
-        windowContent={<ToDoList />}
-      />
+    <div
+      style={{ display: state.ToDoApp.appOpen ? 'block' : 'none' }}
+    >
+      <Window windowTitle="ToDo App" case="ToDoApp">
+        <ToDoList />
+      </Window>
     </div>
   );
 }
-export default ToDoApp;

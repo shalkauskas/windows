@@ -2,9 +2,10 @@
   text-align: center;
 }
 .giflist {
-  max-height: 60vh;
+  max-height: 63vh;
   overflow-x: hidden;
   overflow-y: scroll;
+  margin-top: 85px;
 }
 .search-button {
   margin: 1rem;
@@ -15,5 +16,4 @@ input {
 }
 .search {
   margin-top: 25%;
-  margin-left: 10%;
 }

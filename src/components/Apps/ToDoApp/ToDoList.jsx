@@ -35,8 +35,8 @@ function ToDoList(props) {
       </div>
       <div>
         <ul>
-          {items.map((todoItem) => (
-            <ToDoItem text={todoItem} />
+          {items.map((todoItem, index) => (
+            <ToDoItem text={todoItem} key={index} />
           ))}
         </ul>
       </div>

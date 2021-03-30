@@ -11,9 +11,7 @@
     background: white;
     display: flex;
   }
-  .gif:not(:last-of-type){
-    margin-bottom: 1rem;
-  }
+ 
   .gif img{
     max-width: 100%;
   }

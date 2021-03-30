@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Search = (props) => {
   const [searchText, setSearchText] = useState();
-  const { hideHomeLink, buttonClass = 'normal' } = props;
+  const { hideHomeLink = 'normal' } = props;
   // we add a function to handle the submission of the search form
   const handleSubmit = (e) => {
     e.preventDefault();

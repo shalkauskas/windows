@@ -2,6 +2,8 @@ body {
   background-image: url('./media/xp-background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
+  overflow: hidden;
 }
 footer {
   position: fixed;
@@ -13,16 +15,15 @@ footer {
   background-size: cover;
 }
 
-img {
-  display: block;
-  margin-top: 10px;
-}
 .icon {
   width: 64px;
-  margin-left: 10px;
 }
   .iconApp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   width: 80px;
+  margin: 8px;
   font-size: 12px;
   font-family: sans-serif bold;
   font-smooth: never;

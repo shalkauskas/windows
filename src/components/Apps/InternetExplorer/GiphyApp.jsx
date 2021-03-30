@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Search from './search.js';
-import GifList from './list.js';
+import GifList from './GifList.jsx';
 import './GiphyApp.css';
 
 function GiphyApp() {
@@ -10,12 +10,15 @@ function GiphyApp() {
   };
   return (
     <div className="GiphyApp">
-      <Search
-        hideHomeLink={true}
-        buttonClass="__large"
-        updateParentState={updateParentState}
-      />
-      <GifList gifs={gifs} />
+      {gifs.length > 1 ? (
+        <GifList gifs={gifs} />
+      ) : (
+        <Search
+          hideHomeLink={true}
+          buttonClass="__large"
+          updateParentState={updateParentState}
+        />
+      )}
     </div>
   );
 }
