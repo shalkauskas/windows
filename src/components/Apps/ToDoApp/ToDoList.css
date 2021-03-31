@@ -14,9 +14,7 @@
    
    .todo-container {
      width: 100%;
-     height: auto;
-     min-height: 500px;
-     max-width: 500px;
+     height: 100%;
      min-width: 250px;
      background: #f1f5f8;
      background-image: radial-gradient(#bfc0c1 7.2%, transparent 0);

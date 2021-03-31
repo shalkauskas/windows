@@ -18,7 +18,7 @@ function ToDoList(props) {
   }
 
   return (
-    <div className="todo-container">
+    <article className="todo-container" role="tabpanel">
       <div className="todo-heading">
         <h1>To-Do List</h1>
       </div>
@@ -40,7 +40,7 @@ function ToDoList(props) {
           ))}
         </ul>
       </div>
-    </div>
+    </article>
   );
 }
 

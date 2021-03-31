@@ -4,30 +4,24 @@ import myComputer from '../media/my_computer.png';
 import internetExplorer from '../media/internet_explorer.png';
 import ToDoIcon from '../media/bin.png';
 import weatherIcon from '../media/weather-icon.png';
-import MyComputerApp from './Apps/MyComputer.jsx';
-import InternetExplorerApp from './Apps/InternetExplorer/InternetExplorer.jsx';
-import ToDoApp from './Apps/ToDoApp/ToDoApp.jsx';
-import WeatherApp from './Apps/Weather/WeatherApp.jsx';
+import paint from '../media/paint.png';
+
 export default function Desktop() {
   return (
-    <div>
-      <AppItem icon={myComputer} name="My computer" case="MyComputer">
-        <MyComputerApp />
-      </AppItem>
-
+    <div style={{ position: 'absolute' }}>
+      <AppItem
+        icon={myComputer}
+        name="My computer"
+        case="MyComputer"
+      />
       <AppItem
         icon={internetExplorer}
         name="Internet explorer"
         case="InternetExplorer"
-      >
-        <InternetExplorerApp />
-      </AppItem>
-      <AppItem icon={ToDoIcon} name="ToDo List" case="ToDoApp">
-        <ToDoApp />
-      </AppItem>
-      <AppItem icon={weatherIcon} name="Weather" case="Weather">
-        <WeatherApp />
-      </AppItem>
+      />
+      <AppItem icon={ToDoIcon} name="ToDo List" case="ToDoApp" />
+      <AppItem icon={weatherIcon} name="Weather" case="Weather" />
+      <AppItem icon={paint} name="Paint" case="Paint" />
     </div>
   );
 }

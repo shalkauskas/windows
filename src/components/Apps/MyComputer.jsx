@@ -4,13 +4,15 @@ import { GlobalContext } from '../../App';
 function MyComputerApp() {
   const [state] = React.useContext(GlobalContext);
   return (
-    <div
-      style={{ display: state.MyComputer.appOpen ? 'block' : 'none' }}
+    <Window
+      windowTitle="My Computer"
+      case="MyComputer"
+      open={state.MyComputer.appOpen}
     >
-      <Window windowTitle="My Computer" case="MyComputer">
+      <article role="tabpanel">
         <p>Access denied: Property of Bill Gates</p>
-      </Window>
-    </div>
+      </article>
+    </Window>
   );
 }
 export default MyComputerApp;

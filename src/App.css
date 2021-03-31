@@ -1,3 +1,6 @@
+#root, #app {
+  height: inherit;
+}
 body {
   background-image: url('./media/xp-background.jpg');
   background-repeat: no-repeat;
@@ -14,7 +17,6 @@ footer {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 .icon {
   width: 64px;
 }
@@ -24,6 +26,7 @@ footer {
     align-items: center;
   width: 80px;
   margin: 8px;
+  padding: 4px;
   font-size: 12px;
   font-family: sans-serif bold;
   font-smooth: never;

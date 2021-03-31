@@ -10,17 +10,19 @@ function WeatherApp(props) {
     setTimeout(!state.Weather.appOpen && setSubmitted(false), 1000);
   }, [state.Weather.appOpen]);
   return (
-    <div
-      style={{ display: state.Weather.appOpen ? 'block' : 'none' }}
+    <Window
+      windowTitle="Weather"
+      case="Weather"
+      open={state.Weather.appOpen}
+      width={`400px`}
+      height={`400px`}
     >
-      <Window windowTitle="Weather" case="Weather">
-        {submitted ? (
-          <WeatherResult />
-        ) : (
-          <WeatherPrompt setSubmitted={setSubmitted} />
-        )}
-      </Window>
-    </div>
+      {submitted ? (
+        <WeatherResult />
+      ) : (
+        <WeatherPrompt setSubmitted={setSubmitted} />
+      )}
+    </Window>
   );
 }
 
