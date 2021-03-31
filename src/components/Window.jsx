@@ -49,6 +49,8 @@ function Window(props) {
           style={{
             margin: props.margin && props.margin,
             flexGrow: '1',
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
           {props.children}

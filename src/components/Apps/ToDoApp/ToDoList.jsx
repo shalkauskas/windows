@@ -18,10 +18,7 @@ function ToDoList(props) {
   }
 
   return (
-    <article className="todo-container" role="tabpanel">
-      <div className="todo-heading">
-        <h1>To-Do List</h1>
-      </div>
+    <div className="todo-container">
       <div className="todo-form">
         <input
           onChange={handleChange}
@@ -40,7 +37,7 @@ function ToDoList(props) {
           ))}
         </ul>
       </div>
-    </article>
+    </div>
   );
 }
 

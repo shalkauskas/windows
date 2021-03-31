@@ -7,6 +7,8 @@ function ToDoItem(props) {
   }
   return (
     <li id="liItem" style={style} onClick={updateStyle}>
+      <input type="checkbox" id="example1" />
+      <label for="example1">Done</label>
       {props.text}
     </li>
   );
