@@ -1,17 +1,4 @@
-/* body {
-     background-color: #ffeaa7;
-     min-height: 70vh;
-     padding: 1rem;
-     box-sizing: border-box;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     color: hsl(198, 1%, 29%);
-     font-family: "Architects Daughter", cursive;
-     text-align: center;
-     font-size: 130%;
-   } */
-    article {
+  article {
       flex-grow: 1;
     }
    .todo-container {
@@ -26,20 +13,6 @@
      padding: 1rem;
      box-sizing: border-box;
    }
-   .todo-heading {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     margin-bottom: 1rem;
-   }
-   .todo-heading h1 {
-     transform: rotate(2deg);
-     padding: 0.2rem 1.2rem;
-     border-radius: 20% 5% 20% 5%/5% 20% 25% 20%;
-     background-color: #fdcb6e;
-     font-size: 1.5rem;
-   }
-   
    #input {
      box-sizing: border-box;
      background-color: transparent;
@@ -47,8 +20,7 @@
      border-bottom-right-radius: 15px 3px;
      border-bottom-left-radius: 3px 15px;
      border: solid 3px transparent;
-     border-bottom: dashed 3px #fdcb6e;
-     font-family: "Architects Daughter", cursive;
+     border-bottom: solid 3px black;
      font-size: 1rem;
      color: hsla(260, 2%, 25%, 0.7);
      width: 70%;
@@ -76,7 +48,6 @@
      text-align: left;
      position: relative;
      padding: 0.5rem;
-     font-family: "Architects Daughter", cursive;
      font-size: 20px;
    }
    

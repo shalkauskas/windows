@@ -19,9 +19,13 @@ export const reduce = (state, action) => {
         activeTab: action.payload,
       };
     case 'NewTab':
+      const stopEdit2 = state.tabs.map((tab) => ({
+        ...tab,
+        edit: false,
+      }));
       return {
         activeTab: action.payload.id,
-        tabs: [...state.tabs, action.payload],
+        tabs: [...stopEdit2, action.payload],
       };
     case 'StartRename':
       const findTab = state.tabs.find(

@@ -4,16 +4,15 @@ import { reduce, initialState } from './TabReducer';
 import { GlobalContext } from '../../../App';
 import ToDoList from './ToDoList';
 export default function ToDoApp() {
-  const [tabName, setTabName] = React.useState('');
   const [state] = React.useContext(GlobalContext);
   const [tabState, tabDispatch] = React.useReducer(
     reduce,
     initialState,
   );
+  const [tabName, setTabName] = React.useState(tabState.tabs); //edit mode closes only frist two
   const tab = tabState.tabs.map((tab, index) => {
     // change tab
     const changeTab = (id) => {
-      console.log(tab.edit);
       !tab.edit && tabDispatch({ type: 'Switch', payload: id });
     };
     // rename
@@ -41,6 +40,7 @@ export default function ToDoApp() {
         },
       });
     };
+    console.log(tabName);
     return (
       <button
         onDoubleClick={() => rename(tab.id, true)}
@@ -59,6 +59,10 @@ export default function ToDoApp() {
             }}
           >
             <input
+              style={{ maxWidth: '3rem' }}
+              maxLength="20"
+              autoFocus
+              onBlur={(e) => saveName(e, index)}
               value={tab.name}
               onChange={(e) => handleNameChange(e, index)}
             ></input>
@@ -92,16 +96,28 @@ export default function ToDoApp() {
     });
   };
 
+  const editMode = tabState.tabs.find((item) => {
+    return item;
+  });
   return (
     <Window
       windowTitle="ToDo App"
       case="ToDoApp"
       open={state.ToDoApp.appOpen}
       height={600}
+      statusBar
+      statusBarField1={
+        editMode.edit
+          ? `Press Enter to save`
+          : 'Rename a tab on double click'
+      }
+      statusBarField2={
+        editMode.edit
+          ? `20 characters tab name limit`
+          : `Add new tabs on + button`
+      }
+      statusBarField3={`Total tabs: ` + tabState.tabs.length}
     >
-      <div className="todo-heading">
-        <h1>To-Do List</h1>
-      </div>
       <menu role="tablist" style={{ overflow: 'auto' }}>
         {tab}
         <button

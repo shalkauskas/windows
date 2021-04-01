@@ -7,6 +7,7 @@ body {
   background-size: cover;
   height: 100vh;
   overflow: hidden;
+  font-family: "Pixelated MS Sans Serif" !important;
 }
 footer {
   position: fixed;
@@ -20,7 +21,7 @@ footer {
 .icon {
   width: 64px;
 }
-  .iconApp {
+.iconApp {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,7 +37,7 @@ footer {
 }
 
 /* Modal Content/Box */
-  .window {
+.window {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -48,4 +49,23 @@ footer {
 }
 .window-body {
   text-align: center;
+}
+.status-bar {
+  margin: 0 3px;
+    box-shadow: inset 0 1px 2px grey;
+    padding: 4px 2px;
+    gap: 0;
+    display: flex;
+}
+.status-bar-field {
+
+    box-shadow: none;
+    padding: 1px 2px;
+    border-right: 1px solid rgba(208,206,191,.75);
+    border-left: 1px solid hsla(0,0%,100%,.75);
+    flex-grow: 1;
+    margin: 0;
+}
+.status-bar-field:first-of-type {
+  border-left: none;
 }

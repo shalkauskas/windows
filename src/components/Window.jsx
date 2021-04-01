@@ -1,6 +1,7 @@
 import React from 'react';
 import { GlobalContext } from '../App';
 import { Rnd } from 'react-rnd';
+import DropdownMenu from './Dropdown/DropdownMenu';
 function Window(props) {
   const [, dispatch] = React.useContext(GlobalContext);
   const handleClose = () => {
@@ -44,6 +45,7 @@ function Window(props) {
             <button onClick={handleClose} aria-label="Close"></button>
           </div>
         </div>
+        <DropdownMenu />
         <div
           className="window-body"
           style={{
@@ -55,6 +57,19 @@ function Window(props) {
         >
           {props.children}
         </div>
+        {props.statusBar && (
+          <div className="status-bar">
+            <p className="status-bar-field">
+              {props.statusBarField1}
+            </p>
+            <p className="status-bar-field">
+              {props.statusBarField2}
+            </p>
+            <p className="status-bar-field">
+              {props.statusBarField3}
+            </p>
+          </div>
+        )}
       </div>
     </Rnd>
   );

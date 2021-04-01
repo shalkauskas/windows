@@ -19,24 +19,40 @@ function ToDoList(props) {
 
   return (
     <div className="todo-container">
-      <div className="todo-form">
+      <div style={{ marginBottom: '1rem' }}>
         <input
+          style={{
+            marginRight: '0.5rem',
+            width: '50%',
+            maxWidth: '300px',
+            boxShadow: 'inset 0 0 1px #000000',
+          }}
           onChange={handleChange}
           type="text"
-          id="input"
+          // id="input"
           value={inputText}
         />
-        <button id="button" onClick={addItem}>
-          <span id="span">Add</span>
+        <button
+          // id="button"
+          onClick={addItem}
+        >
+          Add
+          {/* <span id="span"></span> */}
         </button>
       </div>
-      <div>
-        <ul>
+      <fieldset>
+        <ul
+          style={{
+            listStyle: 'none',
+            paddingInlineStart: 0,
+            margin: 0,
+          }}
+        >
           {items.map((todoItem, index) => (
-            <ToDoItem text={todoItem} key={index} />
+            <ToDoItem text={todoItem} key={index} id={index} />
           ))}
         </ul>
-      </div>
+      </fieldset>
     </div>
   );
 }
