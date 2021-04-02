@@ -12,7 +12,7 @@ import { reduce, initialState } from './GlobalContext';
 export const GlobalContext = createContext();
 export default function App() {
   const [state, dispatch] = React.useReducer(reduce, initialState);
-  console.log(state);
+  // console.log(state);
   return (
     <div id="app">
       <GlobalContext.Provider value={[state, dispatch]}>

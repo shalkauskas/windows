@@ -40,7 +40,6 @@ export default function ToDoApp() {
         },
       });
     };
-    console.log(tabName);
     return (
       <button
         onDoubleClick={() => rename(tab.id, true)}

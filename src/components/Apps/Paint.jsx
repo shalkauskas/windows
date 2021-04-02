@@ -10,6 +10,8 @@ export default function Paint() {
       open={state.Paint.appOpen}
       width={1000}
       height={600}
+      noDropdown
+      margin={3}
     >
       <iframe
         src="https://jspaint.app"

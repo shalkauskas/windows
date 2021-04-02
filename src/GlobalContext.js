@@ -49,6 +49,11 @@ export const reduce = (state, action) => {
           appOpen: action.payload,
         },
       };
+    case 'ActiveApp':
+      return {
+        ...state,
+        ActiveApp: action.payload,
+      };
     default:
       return state;
   }
@@ -62,4 +67,5 @@ export const initialState = {
   ToDoApp: { appOpen: false, error: '' },
   Weather: { appOpen: false, error: '', result: {} },
   Paint: { appOpen: false, error: '' },
+  ActiveApp: ``,
 };
