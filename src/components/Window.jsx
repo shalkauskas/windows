@@ -2,21 +2,30 @@ import React from 'react';
 import { GlobalContext } from '../App';
 import { Rnd } from 'react-rnd';
 import DropdownMenu from './Dropdown/DropdownMenu';
-import useOuterClick from './useOuterClick';
+// import OutsideClicker from './useOuterClick';
 function Window(props) {
-  const windowRef = useOuterClick((ev) => console.log(ev.target));
   const [state, dispatch] = React.useContext(GlobalContext);
+  const [maximize, setMaximize] = React.useState(false);
   const handleClose = () => {
     dispatch({ type: props.case, payload: false });
   };
   const setActiveApp = () => {
     dispatch({ type: `ActiveApp`, payload: props.case });
   };
-  // React.useEffect(() => {
-  //   dispatch({ type: `ActiveApp`, payload: props.case });
-  // }, [dispatch, props.case, props.open]);
+  React.useEffect(() => {
+    dispatch({ type: `ActiveApp`, payload: props.case });
+  }, [dispatch, props.case, props.open]);
+  const handleMaximize = () => {
+    setMaximize(!maximize);
+  };
   return (
+    // <OutsideClicker
+    //   onClickOutside={() =>
+    //     dispatch({ type: `ActiveApp`, payload: `` })
+    //   }
+    // >
     <Rnd
+      onDrag={setActiveApp}
       style={{
         display: props.open ? 'block' : 'none',
         zIndex: state.ActiveApp === props.case && 30,
@@ -25,12 +34,20 @@ function Window(props) {
       dragHandleClassName={`title-bar`}
       minWidth={400}
       minHeight={400}
+      size={{
+        height: maximize ? `100%` : props.height,
+        width: maximize ? `100%` : props.width,
+      }}
+      position={{
+        x: maximize ? -100 : 100,
+        y: maximize ? -100 : 100,
+      }}
       default={{
         x: 100,
         y: 100,
 
-        width: props.width || `400px`,
-        height: props.height || `400px`,
+        width: `400px`,
+        height: `400px`,
       }}
     >
       <div
@@ -53,15 +70,18 @@ function Window(props) {
         }}
       >
         <div
+          onClickCapture={setActiveApp}
           className="title-bar"
-          ref={windowRef}
-          onMouseDown={setActiveApp}
           style={{
             opacity: state.ActiveApp === props.case ? 1 : 0.7,
           }}
         >
           <div className="title-bar-text">{props.windowTitle}</div>
           <div className="title-bar-controls">
+            <button
+              aria-label="Maximize"
+              onClick={handleMaximize}
+            ></button>
             <button onClick={handleClose} aria-label="Close"></button>
           </div>
         </div>
@@ -70,6 +90,7 @@ function Window(props) {
           noDropdown={props.noDropdown}
         />
         <div
+          onClickCapture={setActiveApp}
           className="window-body"
           style={{
             margin: props.margin && props.margin,
@@ -95,6 +116,7 @@ function Window(props) {
         )}
       </div>
     </Rnd>
+    // </OutsideClicker>
   );
 }
 

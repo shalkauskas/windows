@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
-import './Time.css';
-
-function Time() {
-  const [defaultTime, timeUpdate] = useState('Time');
+import { createUseStyles } from 'react-jss';
+const useStyles = createUseStyles({
+  time: {
+    marginRight: `0.7rem`,
+    fontSize: `11px`,
+    color: `white`,
+    fontFamily: 'Arial',
+    alignSelf: `center`,
+  },
+});
+export default function Time() {
+  const classes = useStyles();
+  const [defaultTime, timeUpdate] = useState('00:00AM');
   function newTime() {
     const time = new Date().toLocaleTimeString('en-US', {
       hour: '2-digit',
@@ -11,7 +20,5 @@ function Time() {
     timeUpdate(time);
   }
   setInterval(newTime, 1000);
-  return <p className="time">{defaultTime}</p>;
+  return <div className={classes.time}>{defaultTime}</div>;
 }
-
-export default Time;
