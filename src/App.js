@@ -6,7 +6,6 @@ import InternetExplorerApp from './components/Apps/InternetExplorer/InternetExpl
 import ToDoApp from './components/Apps/ToDoApp/ToDoApp.jsx';
 import WeatherApp from './components/Apps/Weather/WeatherApp.jsx';
 import Paint from './components/Apps/Paint.jsx';
-
 import Footer from './components/Footer/Footer';
 import { reduce, initialState } from './GlobalContext';
 export const GlobalContext = createContext();
@@ -25,11 +24,12 @@ export default function App() {
             height: 'inherit',
           }}
         >
-          <MyComputerApp />
-          <InternetExplorerApp />
-          <ToDoApp />
-          <WeatherApp />
-          <Paint />
+          {state.MyComputer.appOpen && <MyComputerApp />}
+
+          {state.InternetExplorer.appOpen && <InternetExplorerApp />}
+          {state.ToDoApp.appOpen && <ToDoApp />}
+          {state.Weather.appOpen && <WeatherApp />}
+          {state.Paint.appOpen && <Paint />}
         </div>
 
         <Footer />

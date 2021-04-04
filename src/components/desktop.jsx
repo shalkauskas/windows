@@ -2,7 +2,7 @@ import React from 'react';
 import AppItem from './AppItem.jsx';
 import myComputer from '../media/my_computer.png';
 import internetExplorer from '../media/internet_explorer.png';
-import ToDoIcon from '../media/bin.png';
+import ToDoIcon from '../media/todoapp.png';
 import weatherIcon from '../media/weather-icon.png';
 import paint from '../media/paint.png';
 

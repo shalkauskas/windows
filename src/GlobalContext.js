@@ -54,6 +54,11 @@ export const reduce = (state, action) => {
         ...state,
         ActiveApp: action.payload,
       };
+    case 'StartMenu':
+      return {
+        ...state,
+        StartMenu: { open: action.payload },
+      };
     default:
       return state;
   }
@@ -68,4 +73,5 @@ export const initialState = {
   Weather: { appOpen: false, error: '', result: {} },
   Paint: { appOpen: false, error: '' },
   ActiveApp: ``,
+  StartMenu: { open: false },
 };

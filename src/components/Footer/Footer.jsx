@@ -1,11 +1,10 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 import Time from './Time';
-import start from '../../media/start.png';
 import StartMenu from './StartMenu';
-import sound from '../../media/sound.png';
-import printer from '../../media/printer-error.png';
-import important from '../../media/important.png';
+import { GlobalContext } from '../../App';
+
+import assets from './assets';
 const useStyles = createUseStyles({
   footer: {
     position: `fixed`,
@@ -50,45 +49,52 @@ const useStyles = createUseStyles({
 export default function Footer() {
   const startRef = React.useRef();
   const classes = useStyles();
+  const [state, dispatch] = React.useContext(GlobalContext);
   const [startOpen, setStartOpen] = React.useState(false);
+  const handleMenu = () => {
+    dispatch({ type: `StartMenu`, payload: !state.StartMenu.open });
+  };
   React.useEffect(() => {
+    const handleClick = (e) => {
+      if (startRef.current.contains(e.target)) {
+        // inside click
+        return;
+      }
+      // outside click
+      dispatch({ type: `StartMenu`, payload: false });
+    };
     // add when mounted
     document.addEventListener('mousedown', handleClick);
     // return function to be called when unmounted
     return () => {
       document.removeEventListener('mousedown', handleClick);
     };
-  }, []);
-  const handleClick = (e) => {
-    if (startRef.current.contains(e.target)) {
-      // inside click
-      return;
-    }
-    // outside click
-    setStartOpen(false);
-  };
+  }, [dispatch]);
+
   return (
     <footer className={classes.footer}>
       <div className={classes.leftSide}>
         <div className={classes.startWrapper} ref={startRef}>
           <img
-            src={start}
+            src={assets.start}
             alt="start"
             width="100px"
             height="inherit"
             className={classes.startButton}
-            style={{ filter: startOpen && `brightness(105%)` }}
-            onClick={() => setStartOpen(!startOpen)}
+            style={{
+              filter: state.StartMenu.open && `brightness(105%)`,
+            }}
+            onClick={handleMenu}
           />
-          <StartMenu startOpen={startOpen} />
+          <StartMenu />
         </div>
       </div>
 
       <div className={classes.rightSide}>
         <div className={classes.notifications}>
-          <img src={sound} alt="notification" />
-          <img src={printer} alt="notification" />
-          <img src={important} alt="notification" />
+          <img src={assets.sound} alt="notification" />
+          <img src={assets.printerError} alt="notification" />
+          <img src={assets.important} alt="notification" />
         </div>
         <Time />
       </div>

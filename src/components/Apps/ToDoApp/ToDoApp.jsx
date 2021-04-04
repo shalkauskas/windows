@@ -1,10 +1,8 @@
 import React from 'react';
 import Window from '../../Window';
 import { reduce, initialState } from './TabReducer';
-import { GlobalContext } from '../../../App';
 import ToDoList from './ToDoList';
 export default function ToDoApp() {
-  const [state] = React.useContext(GlobalContext);
   const [tabState, tabDispatch] = React.useReducer(
     reduce,
     initialState,
@@ -102,7 +100,6 @@ export default function ToDoApp() {
     <Window
       windowTitle="ToDo App"
       case="ToDoApp"
-      open={state.ToDoApp.appOpen}
       height={600}
       statusBar
       statusBarField1={

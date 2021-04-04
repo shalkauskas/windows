@@ -27,27 +27,24 @@ function Window(props) {
     <Rnd
       onDrag={setActiveApp}
       style={{
-        display: props.open ? 'block' : 'none',
+        display: 'block',
         zIndex: state.ActiveApp === props.case && 30,
       }}
       bounds={'body'}
       dragHandleClassName={`title-bar`}
       minWidth={400}
-      minHeight={400}
-      size={{
-        height: maximize ? `100%` : props.height,
-        width: maximize ? `100%` : props.width,
-      }}
-      position={{
-        x: maximize ? -100 : 100,
-        y: maximize ? -100 : 100,
-      }}
+      minHeight={200}
+      // position={{to do}}
+      // size={{
+      //   height: maximize ? `100%` : props.height,
+      //   width: maximize ? `100%` : props.width,
+      // }}
       default={{
         x: 100,
         y: 100,
 
-        width: `400px`,
-        height: `400px`,
+        width: props.width ? props.width : `400px`,
+        height: props.height ? props.height : `400px`,
       }}
     >
       <div
@@ -78,17 +75,17 @@ function Window(props) {
         >
           <div className="title-bar-text">{props.windowTitle}</div>
           <div className="title-bar-controls">
-            <button
+            {/* <button
               aria-label="Maximize"
               onClick={handleMaximize}
-            ></button>
-            <button onClick={handleClose} aria-label="Close"></button>
+            /> */}
+            <button onClick={handleClose} aria-label="Close" />
           </div>
         </div>
-        <DropdownMenu
-          handleClose={handleClose}
-          noDropdown={props.noDropdown}
-        />
+        {!props.noDropdown && (
+          <DropdownMenu handleClose={handleClose} />
+        )}
+
         <div
           onClickCapture={setActiveApp}
           className="window-body"

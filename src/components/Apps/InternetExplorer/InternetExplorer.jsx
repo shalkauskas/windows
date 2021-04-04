@@ -2,9 +2,7 @@ import React from 'react';
 import Window from '../../Window.jsx';
 import GiphyApp from './GiphyApp';
 import google from '../../../media/google.png';
-import { GlobalContext } from '../../../App';
-function InternetExplorerApp() {
-  const [state] = React.useContext(GlobalContext);
+export default function InternetExplorerApp() {
   return (
     <Window
       windowTitle="Internet Explorer"
@@ -14,11 +12,8 @@ function InternetExplorerApp() {
       backgroundImage={google}
       backgroundColor="white"
       margin="3px"
-      open={state.InternetExplorer.appOpen}
     >
       <GiphyApp />
     </Window>
   );
 }
-
-export default InternetExplorerApp;

@@ -1,13 +1,10 @@
 import React from 'react';
 import Window from '../Window.jsx';
-import { GlobalContext } from '../../App';
 export default function Paint() {
-  const [state] = React.useContext(GlobalContext);
   return (
     <Window
       windowTitle="MS Paint"
       case="Paint"
-      open={state.Paint.appOpen}
       width={1000}
       height={600}
       noDropdown

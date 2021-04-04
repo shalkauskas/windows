@@ -1,8 +1,9 @@
+import React from 'react';
 import { createUseStyles } from 'react-jss';
-
 import StartMenuHeader from './StartMenuHeader';
 import StartMenuFooter from './StartMenuFooter';
 import StartMenuMain from './StartMenuMain';
+import { GlobalContext } from '../../App';
 const useStyles = createUseStyles({
   dropdownRow: {
     position: 'absolute',
@@ -20,14 +21,14 @@ const useStyles = createUseStyles({
   },
 });
 
-export default function StartMenu(props) {
+export default function StartMenu() {
   const classes = useStyles();
-
+  const [state] = React.useContext(GlobalContext);
   return (
     <div
       className={classes.dropdownRow}
       style={{
-        display: !props.startOpen && 'none',
+        display: !state.StartMenu.open && 'none',
       }}
     >
       <StartMenuHeader />

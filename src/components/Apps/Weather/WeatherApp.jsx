@@ -15,7 +15,8 @@ function WeatherApp(props) {
       case="Weather"
       open={state.Weather.appOpen}
       width={`400px`}
-      height={`400px`}
+      height={`200px`}
+      noDropdown
     >
       {submitted ? (
         <WeatherResult />

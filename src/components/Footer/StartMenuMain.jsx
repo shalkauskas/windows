@@ -1,4 +1,6 @@
+import React from 'react';
 import { createUseStyles } from 'react-jss';
+import { GlobalContext } from '../../App';
 import assets from './assets';
 const useStyles = createUseStyles({
   main: {
@@ -48,10 +50,18 @@ const useStyles = createUseStyles({
 });
 export default function StartMenuMain() {
   const classes = useStyles();
+  const [, dispatch] = React.useContext(GlobalContext);
+  const handleOpen = (app) => {
+    dispatch({ type: app, payload: true });
+    dispatch({ type: `StartMenu`, payload: false });
+  };
   return (
     <main className={classes.main}>
       <div className={classes.left}>
-        <div className={classes.item}>
+        <div
+          className={classes.item}
+          onClick={() => handleOpen(`InternetExplorer`)}
+        >
           <img src={assets.internetExplorer} alt="icon" />
           <div
             style={{
@@ -87,15 +97,24 @@ export default function StartMenuMain() {
         </div>
         <div className={classes.separator} />
 
-        <div className={classes.item}>
-          <img src={assets.ToDoIcon} alt="icon" />
-          ToDo List
+        <div
+          className={classes.item}
+          onClick={() => handleOpen(`ToDoApp`)}
+        >
+          <img src={assets.todoApp} alt="icon" />
+          Task Manager
         </div>
-        <div className={classes.item}>
+        <div
+          className={classes.item}
+          onClick={() => handleOpen(`Weather`)}
+        >
           <img src={assets.weatherIcon} alt="icon" />
           Weather
         </div>
-        <div className={classes.item}>
+        <div
+          className={classes.item}
+          onClick={() => handleOpen(`Paint`)}
+        >
           <img src={assets.paint} alt="icon" />
           Paint
         </div>
@@ -121,20 +140,22 @@ export default function StartMenuMain() {
         <div className={classes.item}>
           <img src={assets.documents} alt="icon" /> <b>My Douments</b>
         </div>
-
         <div className={classes.item}>
           <img src={assets.images} alt="icon" /> <b>My Pictures</b>
         </div>
         <div className={classes.item}>
           <img src={assets.music} alt="icon" /> <b>My Music</b>
         </div>
-        <div className={classes.item}>
+        <div
+          className={classes.item}
+          onClick={() => handleOpen(`MyComputer`)}
+        >
           <img src={assets.myComputer} alt="icon" />{' '}
           <b>My Computer</b>
         </div>
         <div className={classes.separator} />
         <div className={classes.item}>
-          <img src={assets.ToDoIcon} alt="icon" />
+          <img src={assets.controlPanel} alt="icon" />
           Control Panel
         </div>
         <div className={classes.item}>

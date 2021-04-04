@@ -2,59 +2,58 @@ import React from 'react';
 import { createUseStyles } from 'react-jss';
 import Item from './DropDownMenuItem';
 import check from '../../media/check.png';
-
-export default function DropdownMenu(props) {
-  const useStyles = createUseStyles({
-    dropdown: {
-      margin: `0 3px`,
-      borderBottom: `1px solid rgba(0, 0, 0, 0.1)`,
-      padding: `0px 2px`,
-      gap: 0,
-      display: props.noDropdown ? `none` : `flex`,
-    },
-    dropdownColumn: {
-      display: 'flex',
-    },
-    dropdownLabel: {
-      padding: `0 9px`,
-      '&:hover': {
-        backgroundColor: `rgb(22, 96, 232)`,
-        color: `rgb(255, 255, 255)`,
-      },
-    },
-    labelActive: {
+const useStyles = createUseStyles({
+  dropdown: {
+    margin: `0 3px`,
+    borderBottom: `1px solid rgba(0, 0, 0, 0.1)`,
+    padding: `0px 2px`,
+    gap: 0,
+    display: `flex`,
+  },
+  dropdownColumn: {
+    display: 'flex',
+  },
+  dropdownLabel: {
+    padding: `0 9px`,
+    '&:hover': {
       backgroundColor: `rgb(22, 96, 232)`,
       color: `rgb(255, 255, 255)`,
     },
-    dropdownColumnItem: {
-      position: 'relative',
-      userSelect: 'none',
-      boxShadow: 'none',
-      lineHeight: '20px',
-      margin: '0',
-      '&:first-of-type': {
-        marginLeft: '2px',
-      },
+  },
+  labelActive: {
+    backgroundColor: `rgb(22, 96, 232)`,
+    color: `rgb(255, 255, 255)`,
+  },
+  dropdownColumnItem: {
+    position: 'relative',
+    userSelect: 'none',
+    boxShadow: 'none',
+    lineHeight: '20px',
+    margin: '0',
+    '&:first-of-type': {
+      marginLeft: '2px',
     },
-    dropdownRow: {
-      position: 'absolute',
-      width: 'max-content',
-      lineHeight: '18px',
-      padding: '4px 0',
-      zIndex: '10',
-      backgroundColor: 'rgb(255, 255, 255)',
-      left: '0',
-      boxShadow: 'rgb(100 100 100) 2px 2px 1px',
-      border: '1px solid gray',
-    },
-    separator: {
-      height: `1px`,
-      padding: `3px 1px`,
-      backgroundColor: `rgba(0, 0, 0, 0.2)`,
-      backgroundClip: `content-box`,
-    },
-  });
-  const classes = useStyles(props);
+  },
+  dropdownRow: {
+    position: 'absolute',
+    width: 'max-content',
+    lineHeight: '18px',
+    padding: '4px 0',
+    zIndex: '10',
+    backgroundColor: 'rgb(255, 255, 255)',
+    left: '0',
+    boxShadow: 'rgb(100 100 100) 2px 2px 1px',
+    border: '1px solid gray',
+  },
+  separator: {
+    height: `1px`,
+    padding: `3px 1px`,
+    backgroundColor: `rgba(0, 0, 0, 0.2)`,
+    backgroundClip: `content-box`,
+  },
+});
+export default function DropdownMenu(props) {
+  const classes = useStyles();
   const node = React.useRef();
   const [selectActive, setSelectActive] = React.useState(``);
   React.useEffect(() => {
