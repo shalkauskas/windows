@@ -39,6 +39,7 @@ export const reduce = (state, action) => {
           appOpen: true,
           error: action.payload.error || '',
           result: action.payload.result || {},
+          units: action.payload.units || 'imperial',
         },
       };
     case 'Paint':
@@ -53,6 +54,14 @@ export const reduce = (state, action) => {
       return {
         ...state,
         ActiveApp: action.payload,
+      };
+    case 'WindowsMediaPlayer':
+      return {
+        ...state,
+        WindowsMediaPlayer: {
+          ...state.WindowsMediaPlayer,
+          appOpen: action.payload,
+        },
       };
     case 'StartMenu':
       return {
@@ -70,8 +79,14 @@ export const initialState = {
   },
   InternetExplorer: { appOpen: false, error: '' },
   ToDoApp: { appOpen: false, error: '' },
-  Weather: { appOpen: false, error: '', result: {} },
+  Weather: {
+    appOpen: false,
+    error: '',
+    result: {},
+    units: `imperial`,
+  },
   Paint: { appOpen: false, error: '' },
+  WindowsMediaPlayer: { appOpen: false, error: `` },
   ActiveApp: ``,
   StartMenu: { open: false },
 };

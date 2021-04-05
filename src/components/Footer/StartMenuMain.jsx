@@ -126,7 +126,10 @@ export default function StartMenuMain() {
           <img src={assets.acrobatReader} alt="icon" />
           Acrobat Reader
         </div>
-        <div className={classes.item}>
+        <div
+          className={classes.item}
+          onClick={() => handleOpen(`WindowsMediaPlayer`)}
+        >
           <img src={assets.player} alt="icon" />
           Windows Media Player
         </div>

@@ -50,7 +50,6 @@ export default function Footer() {
   const startRef = React.useRef();
   const classes = useStyles();
   const [state, dispatch] = React.useContext(GlobalContext);
-  const [startOpen, setStartOpen] = React.useState(false);
   const handleMenu = () => {
     dispatch({ type: `StartMenu`, payload: !state.StartMenu.open });
   };

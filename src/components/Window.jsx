@@ -25,6 +25,7 @@ function Window(props) {
     //   }
     // >
     <Rnd
+      lockAspectRatio={props.lockAspectRatio && true}
       onDrag={setActiveApp}
       style={{
         display: 'block',
@@ -56,9 +57,9 @@ function Window(props) {
           position: 'relative',
           height: 'inherit',
           width: 'inherit',
-          backgroundColor: props.backgroundColor,
-          backgroundImage: `url(${props.backgroundImage})`,
-          backgroundSize: 'cover',
+          // backgroundColor: props.backgroundColor,
+          // backgroundImage: `url(${props.backgroundImage})`,
+          // backgroundSize: 'cover',
           overflowY: 'hidden',
           boxShadow:
             state.ActiveApp !== props.case &&

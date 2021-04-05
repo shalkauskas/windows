@@ -7,12 +7,19 @@ const useStyles = createUseStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '60px',
+    height: '50px',
     position: 'relative',
     '& img': {
-      position: `absolute`,
+      // position: `absolute`,
+      marginRight: `10px`,
       left: 0,
     },
+  },
+  fieldset: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: 'auto',
+    width: '75%',
   },
   input: {
     width: '200px',
@@ -21,7 +28,7 @@ const useStyles = createUseStyles({
   buttons: {
     display: 'flex',
     justifyContent: 'center',
-    marginBottom: '1rem',
+    margin: '1rem',
   },
   button: {
     margin: '0.5rem',
@@ -30,11 +37,12 @@ const useStyles = createUseStyles({
 export default function WeatherPrompt(props) {
   const classes = useStyles();
   const [city, setCity] = useState('');
+  const [units, setUnits] = useState('imperial');
   const [, dispatch] = React.useContext(GlobalContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const key = process.env.REACT_APP_WEATHER_API_KEY;
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}`;
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}&units=${units}`;
     setCity('');
     fetch(url)
       .then((response) => {
@@ -45,7 +53,7 @@ export default function WeatherPrompt(props) {
         if (response.cod === 200) {
           dispatch({
             type: 'WeatherResult',
-            payload: { result: response },
+            payload: { result: response, units: units },
           });
         } else {
           dispatch({
@@ -59,7 +67,6 @@ export default function WeatherPrompt(props) {
   const handleChange = (event) => {
     setCity(event.target.value);
   };
-
   return (
     <div>
       <div className="window-body">
@@ -68,18 +75,63 @@ export default function WeatherPrompt(props) {
             <img
               src={weather}
               alt="weather icon"
-              width="50px"
-              height="50px"
+              width="30px"
+              height="30px"
             />
             <p>Enter your city and select desired unit system</p>
           </div>
+
+          <label htmlFor="city" style={{ marginRight: '10px' }}>
+            City:
+          </label>
           <input
             type="text"
+            name="city"
             value={city}
-            placeholder="Enter city"
+            placeholder="Boston"
             onChange={handleChange}
             className={classes.input}
+            required
           />
+          <fieldset className={classes.fieldset}>
+            <div className="field-row">Unit system:</div>
+            <div
+              className="field-row"
+              onClick={() => setUnits('imperial')}
+            >
+              <input
+                id="fahrenheit"
+                type="radio"
+                name="units"
+                value={units}
+                defaultChecked
+              />
+              <label
+                style={{ boxSizing: 'initial' }}
+                htmlFor="fahrenheit"
+              >
+                Fahrenheit
+              </label>
+            </div>
+            <div
+              className="field-row"
+              onClick={() => setUnits('metric')}
+            >
+              <input
+                id="celcius"
+                type="radio"
+                name="units"
+                value={units}
+              />
+              <label
+                style={{ boxSizing: 'initial' }}
+                htmlFor="celcius"
+              >
+                Celcius
+              </label>
+            </div>
+          </fieldset>
+
           <div className={classes.buttons}>
             <button className={classes.button} type="submit">
               Ok

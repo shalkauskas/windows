@@ -9,8 +9,8 @@ export default function InternetExplorerApp() {
       case="InternetExplorer"
       width="75vw"
       height="75vh"
-      backgroundImage={google}
-      backgroundColor="white"
+      // backgroundImage={google}
+      // backgroundColor="white"
       margin="3px"
     >
       <GiphyApp />
