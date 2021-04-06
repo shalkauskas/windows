@@ -12,7 +12,7 @@ import WindowsMediaPlayer from './components/Apps/WindowsMediaPlayer';
 export const GlobalContext = createContext();
 export default function App() {
   const [state, dispatch] = React.useReducer(reduce, initialState);
-  console.log(state);
+  // console.log(state);
   return (
     <div id="app">
       <GlobalContext.Provider value={[state, dispatch]}>

@@ -1,3 +1,5 @@
+import { act } from 'react-dom/test-utils';
+
 export const reduce = (state, action) => {
   switch (action.type) {
     case 'MyComputer':
@@ -12,16 +14,27 @@ export const reduce = (state, action) => {
       return {
         ...state,
         InternetExplorer: {
+          ...state.InternetExplorer,
           appOpen: action.payload,
-          error: '',
+        },
+      };
+    case 'InternetExplorerResults':
+      return {
+        ...state,
+        InternetExplorer: {
+          ...state.InternetExplorer,
+          results: action.payload.gifs,
+          query: action.payload.query,
+          pagination: action.payload.pagination,
+          submitted: action.payload.submitted,
         },
       };
     case 'ToDoApp':
       return {
         ...state,
         ToDoApp: {
+          ...state.ToDoApp,
           appOpen: action.payload,
-          error: '',
         },
       };
     case 'Weather':
@@ -77,7 +90,14 @@ export const initialState = {
     appOpen: false,
     error: '',
   },
-  InternetExplorer: { appOpen: false, error: '' },
+  InternetExplorer: {
+    appOpen: false,
+    error: '',
+    results: [],
+    query: ``,
+    pagination: {},
+    submitted: false,
+  },
   ToDoApp: { appOpen: false, error: '' },
   Weather: {
     appOpen: false,

@@ -95,21 +95,22 @@ function Window(props) {
             flexGrow: '1',
             display: 'flex',
             flexDirection: 'column',
+            overflow: 'auto',
           }}
         >
           {props.children}
         </div>
         {props.statusBar && (
           <div className="status-bar">
-            <p className="status-bar-field">
+            <div className="status-bar-field">
               {props.statusBarField1}
-            </p>
-            <p className="status-bar-field">
+            </div>
+            <div className="status-bar-field">
               {props.statusBarField2}
-            </p>
-            <p className="status-bar-field">
+            </div>
+            <div className="status-bar-field">
               {props.statusBarField3}
-            </p>
+            </div>
           </div>
         )}
       </div>
