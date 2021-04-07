@@ -1,7 +1,6 @@
 import React from 'react';
 import Window from './Window.jsx';
 import { createUseStyles } from 'react-jss';
-import { useEffect } from 'react';
 const useStyles = createUseStyles({
   pre: {
     width: '100%',

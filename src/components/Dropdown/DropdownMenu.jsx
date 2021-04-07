@@ -211,10 +211,34 @@ export default function DropdownMenu(props) {
               display: selectActive === `Help` ? 'block' : 'none',
             }}
           >
-            <Item>Help and Support Center</Item>
+            <Item>
+              <a
+                href="https://github.com/shalkauskas/windows"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Help and Support Center
+              </a>
+            </Item>
             <div className={classes.separator} />
-            <Item>Is this copy of Windows legal?</Item>
-            <Item>About Windows</Item>
+            <Item>
+              <a
+                href="https://github.com/shalkauskas/windows"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Is this copy of Windows legal?
+              </a>
+            </Item>
+            <Item>
+              <a
+                href="https://github.com/shalkauskas/windows"
+                rel="noreferrer"
+                target="_blank"
+              >
+                About Windows
+              </a>
+            </Item>
           </div>
         </div>
       </div>

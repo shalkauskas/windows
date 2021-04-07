@@ -53,15 +53,18 @@ export default function WeatherPrompt(props) {
         if (response.cod === 200) {
           dispatch({
             type: 'WeatherResult',
-            payload: { result: response, units: units },
+            payload: { result: response, units: units, error: `` },
           });
         } else {
           dispatch({
+            type: 'Error',
+            payload: { appOpen: true, error: response.message },
+          });
+          dispatch({
             type: 'WeatherResult',
-            payload: { error: response.message },
+            payload: { error: `Not found` },
           });
         }
-        props.setSubmitted(true);
       });
   };
   const handleChange = (event) => {

@@ -11,6 +11,11 @@ export default function DropDownMenuItem(props) {
         backgroundColor: `rgb(22, 96, 232)`,
         color: !props.disabled && `rgb(255, 255, 255)`,
       },
+      '& a': {
+        color: 'inherit',
+        textDecoration: 'none',
+        userSelect: 'none',
+      },
     },
   });
   const classes = useStyles(props);

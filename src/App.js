@@ -1,6 +1,6 @@
 import React, { createContext } from 'react';
 import './App.css';
-import Desktop from './components/Desktop';
+import Desktop from './components/Desktop.jsx';
 import MyComputerApp from './components/Apps/MyComputer.jsx';
 import InternetExplorerApp from './components/Apps/InternetExplorer/InternetExplorer.jsx';
 import ToDoApp from './components/Apps/ToDoApp/ToDoApp.jsx';
@@ -14,6 +14,7 @@ import CommandLine from './components/CommandLine';
 import 'xp.css/dist/XP.css';
 import { createUseStyles } from 'react-jss';
 import background from './media/xp-background.jpg';
+import Error from './components/Error';
 const useStyles = createUseStyles({
   app: {
     backgroundImage: `url("${background}")`,
@@ -49,6 +50,7 @@ export default function App() {
           {state.WindowsMediaPlayer.appOpen && <WindowsMediaPlayer />}
           {state.Notepad.appOpen && <Notepad />}
           {state.CommandLine.appOpen && <CommandLine />}
+          {state.Error.appOpen && <Error />}
         </div>
 
         <Footer />

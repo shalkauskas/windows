@@ -50,19 +50,20 @@ const useStyles = createUseStyles({
 export default function Window(props) {
   const classes = useStyles();
   const [state, dispatch] = React.useContext(GlobalContext);
-  const [maximize, setMaximize] = React.useState(false);
+  // const [maximize, setMaximize] = React.useState(false);
   const handleClose = () => {
     dispatch({ type: props.case, payload: false });
   };
   const setActiveApp = () => {
     dispatch({ type: `ActiveApp`, payload: props.case });
   };
+  // @todo props.open?
   React.useEffect(() => {
     dispatch({ type: `ActiveApp`, payload: props.case });
   }, [dispatch, props.case, props.open]);
-  const handleMaximize = () => {
-    setMaximize(!maximize);
-  };
+  // const handleMaximize = () => {
+  //   setMaximize(!maximize);
+  // };
   return (
     // <OutsideClicker
     //   onClickOutside={() =>
@@ -71,6 +72,7 @@ export default function Window(props) {
     // >
     <Rnd
       lockAspectRatio={props.lockAspectRatio && true}
+      enableResizing={props.disableResizing && false}
       onDrag={setActiveApp}
       style={{
         display: 'block',
@@ -79,7 +81,7 @@ export default function Window(props) {
       bounds={'body'}
       dragHandleClassName={`title-bar`}
       minWidth={400}
-      minHeight={200}
+      minHeight={150}
       // position={{to do}}
       // size={{
       //   height: maximize ? `100%` : props.height,

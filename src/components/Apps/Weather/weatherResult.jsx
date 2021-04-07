@@ -2,7 +2,6 @@ import React from 'react';
 import { GlobalContext } from '../../../App';
 import { createUseStyles } from 'react-jss';
 import { Rnd } from 'react-rnd';
-import Error from '../../Error';
 const useStyles = createUseStyles({
   wrapper: {
     display: 'flex',
@@ -64,76 +63,67 @@ function WeatherResult(props) {
   };
   return (
     <>
-      {state.Weather.error.length > 1 ? (
-        <Error title={'Error'} case="Weather">
-          {state.Weather.error}
-        </Error>
-      ) : (
-        <Rnd
-          bounds={'body'}
-          enableResizing={false}
-          default={{
-            x: 100,
-            y: 100,
-            width: `400px`,
-            height: `200px`,
-          }}
-        >
-          <div className={classes.wrapper}>
-            <span
-              className={classes.closeButton}
-              onClick={handleClose}
+      <Rnd
+        bounds={'body'}
+        enableResizing={false}
+        default={{
+          x: 100,
+          y: 100,
+          width: `400px`,
+          height: `200px`,
+        }}
+      >
+        <div className={classes.wrapper}>
+          <span className={classes.closeButton} onClick={handleClose}>
+            &#x2715;
+          </span>
+          <div className={classes.main}>
+            <div
+              className={classes.main}
+              style={{ flexDirection: 'column' }}
             >
-              &#x2715;
-            </span>
-            <div className={classes.main}>
+              <span>{time}</span>
               <div
-                className={classes.main}
-                style={{ flexDirection: 'column' }}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
               >
-                <span>{time}</span>
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  }}
-                >
-                  <h4>
-                    {weather.name}, {weather.sys.country}
-                  </h4>
-                  <img
-                    alt="Weather icon"
-                    width="90px"
-                    height="90px"
-                    src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
-                  />
-                </div>
-              </div>
-              <div className={classes.weatherHeader}>
-                <div>
-                  <h3>
-                    {Math.round(weather.main.temp)} {units}
-                  </h3>
-                  {weather.weather[0].description
-                    .charAt(0)
-                    .toUpperCase() +
-                    weather.weather[0].description.slice(1)}
-                  .
-                </div>
+                <h4>
+                  {weather.name}, {weather.sys.country}
+                </h4>
+                <img
+                  alt="Weather icon"
+                  width="90px"
+                  height="90px"
+                  src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
+                />
               </div>
             </div>
-
-            <div className={classes.info}>
-              <b>Feels like: </b>
-              {Math.round(weather.main.feels_like)}
-              {units}.<b> Humidity: </b> {weather.main.humidity}%
-              <b> Wind: </b>
-              {Math.round(weather.wind.speed)} {speed}
+            <div className={classes.weatherHeader}>
+              <div>
+                <h3>
+                  {Math.round(weather.main.temp)} {units}
+                </h3>
+                {weather.weather[0].description
+                  .charAt(0)
+                  .toUpperCase() +
+                  weather.weather[0].description.slice(1)}
+                .
+              </div>
             </div>
           </div>
-        </Rnd>
-      )}
+
+          <div className={classes.info}>
+            <b>Feels like: </b>
+            {Math.round(weather.main.feels_like)}
+            {units}.<b> Humidity: </b> {weather.main.humidity}%
+            <b> Wind: </b>
+            {Math.round(weather.wind.speed)} {speed}
+          </div>
+        </div>
+      </Rnd>
     </>
   );
 }

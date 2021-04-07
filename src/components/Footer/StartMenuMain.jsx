@@ -34,12 +34,27 @@ const useStyles = createUseStyles({
     '&:hover': {
       color: `white`,
       backgroundColor: `rgb(47, 113, 205)`,
+      '& $subtitle': {
+        color: 'white',
+      },
     },
     '& img': {
       width: '30px',
       height: '30px',
       marginRight: '3px',
     },
+    '& a': {
+      color: 'inherit',
+      textDecoration: 'none',
+      userSelect: 'none',
+      display: 'inherit',
+      alignItems: 'inherit',
+      cursor: 'default',
+      width: '100%',
+    },
+  },
+  subtitle: {
+    color: `rgba(0, 0, 0, 0.4)`,
   },
   separator: {
     height: `2.5px`,
@@ -53,6 +68,13 @@ export default function StartMenuMain() {
   const [, dispatch] = React.useContext(GlobalContext);
   const handleOpen = (app) => {
     dispatch({ type: app, payload: true });
+    dispatch({ type: `StartMenu`, payload: false });
+  };
+  const handleError = () => {
+    dispatch({
+      type: `Error`,
+      payload: { appOpen: true, error: 'Application not found' },
+    });
     dispatch({ type: `StartMenu`, payload: false });
   };
   return (
@@ -73,27 +95,33 @@ export default function StartMenuMain() {
             <span>
               <b>Internet</b>
             </span>
-            <span style={{ color: `rgba(0, 0, 0, 0.4)` }}>
+            <span className={classes.subtitle}>
               Internet Explorer
             </span>
           </div>
         </div>
         <div className={classes.item}>
-          <img src={assets.mail} alt="icon" />
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              fontSize: '12px',
-            }}
+          <a
+            href="mailto:igor.shalkauskas@gmail.com?subject=Your Windows project looks cool!"
+            rel="noreferrer"
+            target="_blank"
           >
-            <span>
-              <b>E-mail</b>
-            </span>
-            <span style={{ color: `rgba(0, 0, 0, 0.4)` }}>
-              Outlook Express
-            </span>
-          </div>
+            <img src={assets.mail} alt="icon" />
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                fontSize: '12px',
+              }}
+            >
+              <span>
+                <b>E-mail</b>
+              </span>
+              <span className={classes.subtitle}>
+                Outlook Express
+              </span>
+            </div>
+          </a>
         </div>
         <div className={classes.separator} />
 
@@ -125,11 +153,11 @@ export default function StartMenuMain() {
           <img src={assets.notepad} alt="icon" />
           Notepad
         </div>
-        <div className={classes.item}>
+        <div className={classes.item} onClick={() => handleError()}>
           <img src={assets.office} alt="icon" />
           Microsoft Office
         </div>
-        <div className={classes.item}>
+        <div className={classes.item} onClick={() => handleError()}>
           <img src={assets.acrobatReader} alt="icon" />
           Acrobat Reader
         </div>
@@ -140,20 +168,21 @@ export default function StartMenuMain() {
           <img src={assets.player} alt="icon" />
           Windows Media Player
         </div>
-        <div className={classes.item}>
+        <div className={classes.item} onClick={() => handleError()}>
           <img src={assets.messenger} alt="icon" />
           Windows Messenger
         </div>
       </div>
 
       <div className={classes.right}>
-        <div className={classes.item}>
-          <img src={assets.documents} alt="icon" /> <b>My Douments</b>
+        <div className={classes.item} onClick={() => handleError()}>
+          <img src={assets.documents} alt="icon" />{' '}
+          <b>My Documents</b>
         </div>
-        <div className={classes.item}>
+        <div className={classes.item} onClick={() => handleError()}>
           <img src={assets.images} alt="icon" /> <b>My Pictures</b>
         </div>
-        <div className={classes.item}>
+        <div className={classes.item} onClick={() => handleError()}>
           <img src={assets.music} alt="icon" /> <b>My Music</b>
         </div>
         <div
@@ -164,28 +193,40 @@ export default function StartMenuMain() {
           <b>My Computer</b>
         </div>
         <div className={classes.separator} />
-        <div className={classes.item}>
+        <div className={classes.item} onClick={() => handleError()}>
           <img src={assets.controlPanel} alt="icon" />
           Control Panel
         </div>
-        <div className={classes.item}>
+        <div className={classes.item} onClick={() => handleError()}>
           <img src={assets.settings} alt="icon" />
           Set Programm Access and Defaults
         </div>
-        <div className={classes.item}>
+        <div className={classes.item} onClick={() => handleError()}>
           <img src={assets.printer} alt="icon" />
           Printers and faxes
         </div>
         <div className={classes.item}>
-          <img src={assets.network} alt="icon" />
-          Network
+          <a
+            href="https://www.linkedin.com/in/ihor-shalkauskas/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <img src={assets.network} alt="icon" />
+            Network
+          </a>{' '}
         </div>
         <div className={classes.separator} />
         <div className={classes.item}>
-          <img src={assets.help} alt="icon" />
-          Help and Support
+          <a
+            href="https://github.com/shalkauskas/windows"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <img src={assets.help} alt="icon" />
+            Help and Support
+          </a>
         </div>
-        <div className={classes.item}>
+        <div className={classes.item} onClick={() => handleError()}>
           <img src={assets.search} alt="icon" />
           Search
         </div>

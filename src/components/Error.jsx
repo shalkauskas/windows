@@ -3,58 +3,52 @@ import error from '../media/error.png';
 import errorSound from '../media/error.mp3';
 import { GlobalContext } from '../App';
 import { createUseStyles } from 'react-jss';
+import Window from '../components/Window';
 const useStyles = createUseStyles({
-  window: {
-    width: '300px',
-    height: '130px',
-  },
-  titleBarText: {
-    display: 'flex',
-    alignItems: 'center',
-    '& span': {
-      marginLeft: '0.5rem',
-    },
-  },
   windowBody: {
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: '1rem',
     '& p': {
       margin: '1rem',
     },
   },
+  errorContent: {
+    display: 'flex',
+  },
+  button: {
+    margin: '0.5rem',
+    textAlign: 'center',
+  },
 });
 export default function Error(props) {
   const classes = useStyles();
-  const [, dispatch] = React.useContext(GlobalContext);
+  const [state, dispatch] = React.useContext(GlobalContext);
   const handleClose = () => {
-    dispatch({ type: props.case, payload: false });
+    dispatch({ type: 'Error', payload: false });
   };
-  //   React.useEffect(()=> {
-  //        errorSound.play()
-  //   }, [])
   return (
-    <div className={`${classes.window} window`}>
-      <div className="title-bar">
-        <div className={`${classes.titleBarText} title-bar-text`}>
-          <img src={error} alt="Error" width="20px" height="20px" />
-          <span>{props.title || 'C:/ Not Found!'}</span>
-        </div>
-        <div className="title-bar-controls">
-          <button onClick={handleClose} aria-label="Close" />
-        </div>
-      </div>
-      <div className="window-body">
-        <div className={`${classes.windowBody}`}>
+    <Window
+      noDropdown
+      width={300}
+      height={150}
+      icon={error}
+      case="Error"
+      windowTitle={props.title || 'C:/ Not Found!'}
+    >
+      <div className={`${classes.windowBody}`}>
+        <div className={classes.errorContent}>
           <img src={error} alt="Error" width="30px" height="30px" />
-          <p>{props.children || 'Application not found'}</p>
+          <p>{props.children || state.Error.error}</p>
+        </div>
+        <div className={classes.button}>
+          <button onClick={handleClose}>Ok</button>
         </div>
 
-        <button style={{ margin: '0.5rem' }} onClick={handleClose}>
-          Ok
-        </button>
         <audio src={errorSound} autoPlay />
       </div>
-    </div>
+    </Window>
   );
 }

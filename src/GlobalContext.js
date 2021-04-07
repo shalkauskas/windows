@@ -1,5 +1,3 @@
-import { act } from 'react-dom/test-utils';
-
 export const reduce = (state, action) => {
   switch (action.type) {
     case 'MyComputer':
@@ -97,6 +95,14 @@ export const reduce = (state, action) => {
         ...state,
         StartMenu: { open: action.payload },
       };
+    case 'Error':
+      return {
+        ...state,
+        Error: {
+          appOpen: action.payload.appOpen,
+          error: action.payload.error,
+        },
+      };
     default:
       return state;
   }
@@ -130,4 +136,5 @@ export const initialState = {
   CommandLine: { appOpen: false, error: `` },
   ActiveApp: ``,
   StartMenu: { open: false },
+  Error: { appOpen: false, error: `` },
 };

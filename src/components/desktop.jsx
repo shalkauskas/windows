@@ -19,7 +19,7 @@ export default function Desktop() {
         name="Internet explorer"
         case="InternetExplorer"
       />
-      <AppItem icon={ToDoIcon} name="ToDo List" case="ToDoApp" />
+      <AppItem icon={ToDoIcon} name="Task Manager" case="ToDoApp" />
       <AppItem icon={weatherIcon} name="Weather" case="Weather" />
       <AppItem icon={paint} name="Paint" case="Paint" />
       <AppItem icon={notepad} name="Notepad" case="Notepad" />
