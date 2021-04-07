@@ -31,6 +31,7 @@ export default function InternetExplorerApp() {
   return (
     <Window
       windowTitle="Internet Explorer"
+      icon={html}
       case="InternetExplorer"
       width="75vw"
       height="75vh"

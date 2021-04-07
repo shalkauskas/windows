@@ -118,6 +118,13 @@ export default function StartMenuMain() {
           <img src={assets.paint} alt="icon" />
           Paint
         </div>
+        <div
+          className={classes.item}
+          onClick={() => handleOpen(`Notepad`)}
+        >
+          <img src={assets.notepad} alt="icon" />
+          Notepad
+        </div>
         <div className={classes.item}>
           <img src={assets.office} alt="icon" />
           Microsoft Office
@@ -182,7 +189,10 @@ export default function StartMenuMain() {
           <img src={assets.search} alt="icon" />
           Search
         </div>
-        <div className={classes.item}>
+        <div
+          className={classes.item}
+          onClick={() => handleOpen(`CommandLine`)}
+        >
           <img src={assets.run} alt="icon" />
           Run...
         </div>

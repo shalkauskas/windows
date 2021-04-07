@@ -15,6 +15,7 @@ const useStyles = createUseStyles({
     justifyContent: 'space-between',
     flexDirection: 'row',
     height: '30px',
+    zIndex: '40',
   },
   footerContainer: {},
   startButton: {
@@ -52,6 +53,7 @@ export default function Footer() {
   const [state, dispatch] = React.useContext(GlobalContext);
   const handleMenu = () => {
     dispatch({ type: `StartMenu`, payload: !state.StartMenu.open });
+    dispatch({ type: `ActiveApp`, payload: `` });
   };
   React.useEffect(() => {
     const handleClick = (e) => {

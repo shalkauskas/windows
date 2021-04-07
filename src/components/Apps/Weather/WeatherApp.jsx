@@ -3,7 +3,8 @@ import WeatherPrompt from './WeatherPrompt';
 import WeatherResult from './WeatherResult.jsx';
 import Window from '../../Window.jsx';
 import { GlobalContext } from '../../../App';
-export default function WeatherApp(props) {
+import weatherIcon from '../../../media/weather-icon.png';
+export default function WeatherApp() {
   const [state] = React.useContext(GlobalContext);
   const [submitted, setSubmitted] = useState(false);
   React.useEffect(() => {
@@ -16,8 +17,8 @@ export default function WeatherApp(props) {
       ) : (
         <Window
           windowTitle="Weather"
+          icon={weatherIcon}
           case="Weather"
-          open={state.Weather.appOpen}
           width={`400px`}
           height={`300px`}
           noDropdown

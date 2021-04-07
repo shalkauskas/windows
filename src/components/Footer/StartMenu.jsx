@@ -9,7 +9,7 @@ const useStyles = createUseStyles({
     position: 'absolute',
     width: 'max-content',
     lineHeight: '18px',
-    zIndex: '10',
+    zIndex: '40',
     backgroundColor: 'rgb(66, 130, 214)',
     left: '0',
     bottom: `100%`,

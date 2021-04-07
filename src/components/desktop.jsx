@@ -5,7 +5,7 @@ import internetExplorer from '../media/internet_explorer.png';
 import ToDoIcon from '../media/todoapp.png';
 import weatherIcon from '../media/weather-icon.png';
 import paint from '../media/paint.png';
-
+import notepad from '../media/notepad.png';
 export default function Desktop() {
   return (
     <div style={{ position: 'absolute' }}>
@@ -22,6 +22,7 @@ export default function Desktop() {
       <AppItem icon={ToDoIcon} name="ToDo List" case="ToDoApp" />
       <AppItem icon={weatherIcon} name="Weather" case="Weather" />
       <AppItem icon={paint} name="Paint" case="Paint" />
+      <AppItem icon={notepad} name="Notepad" case="Notepad" />
     </div>
   );
 }

@@ -22,6 +22,7 @@ import printerError from '../../media/printer-error.png';
 import important from '../../media/important.png';
 import start from '../../media/start.png';
 import todoApp from '../../media/todoapp.png';
+import notepad from '../../media/notepad.png';
 const assets = {
   myComputer,
   internetExplorer,
@@ -47,5 +48,6 @@ const assets = {
   important,
   start,
   todoApp,
+  notepad,
 };
 export default assets;

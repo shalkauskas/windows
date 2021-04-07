@@ -2,6 +2,7 @@ import React from 'react';
 import Window from '../../Window';
 import { reduce, initialState } from './TabReducer';
 import ToDoList from './ToDoList';
+import ToDoIcon from '../../../media/todoapp.png';
 export default function ToDoApp() {
   const [tabState, tabDispatch] = React.useReducer(
     reduce,
@@ -99,6 +100,7 @@ export default function ToDoApp() {
   return (
     <Window
       windowTitle="ToDo App"
+      icon={ToDoIcon}
       case="ToDoApp"
       height={600}
       statusBar

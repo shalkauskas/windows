@@ -1,9 +1,11 @@
 import React from 'react';
 import Window from '../Window.jsx';
+import paint from '../../media/paint.png';
 export default function Paint() {
   return (
     <Window
       windowTitle="MS Paint"
+      icon={paint}
       case="Paint"
       width={1000}
       height={600}

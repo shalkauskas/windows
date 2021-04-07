@@ -63,6 +63,14 @@ export const reduce = (state, action) => {
           appOpen: action.payload,
         },
       };
+    case 'Notepad':
+      return {
+        ...state,
+        Notepad: {
+          ...state.Notepad,
+          appOpen: action.payload,
+        },
+      };
     case 'ActiveApp':
       return {
         ...state,
@@ -73,6 +81,14 @@ export const reduce = (state, action) => {
         ...state,
         WindowsMediaPlayer: {
           ...state.WindowsMediaPlayer,
+          appOpen: action.payload,
+        },
+      };
+    case 'CommandLine':
+      return {
+        ...state,
+        CommandLine: {
+          ...state.CommandLine,
           appOpen: action.payload,
         },
       };
@@ -87,6 +103,10 @@ export const reduce = (state, action) => {
 };
 export const initialState = {
   MyComputer: {
+    appOpen: false,
+    error: '',
+  },
+  Notepad: {
     appOpen: false,
     error: '',
   },
@@ -107,6 +127,7 @@ export const initialState = {
   },
   Paint: { appOpen: false, error: '' },
   WindowsMediaPlayer: { appOpen: false, error: `` },
+  CommandLine: { appOpen: false, error: `` },
   ActiveApp: ``,
   StartMenu: { open: false },
 };

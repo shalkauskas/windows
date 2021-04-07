@@ -1,9 +1,10 @@
 import React from 'react';
 import Window from '../Window.jsx';
-import playerBackground from '../../media/wmplayer.png';
+import player from '../../media/player.png';
 export default function WindowsMediaPlayer() {
   return (
     <Window
+      icon={player}
       windowTitle="Windows Media Player"
       case="WindowsMediaPlayer"
       lockAspectRatio

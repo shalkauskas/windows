@@ -9,61 +9,6 @@
   height: inherit;
 }
 body {
-  background-image: url('./media/xp-background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
   height: 100vh;
   overflow: hidden;
-  font-family: "Pixelated MS Sans Serif" !important;
-}
-.icon {
-  width: 64px;
-}
-.iconApp {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  width: 80px;
-  margin: 8px;
-  padding: 4px;
-  font-size: 12px;
-  font-family: sans-serif bold;
-  font-smooth: never;
-  -webkit-font-smoothing : none;
-  color: rgb(255, 255, 255);
-  text-align: center;
-}
-
-/* Modal Content/Box */
-.window {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-repeat: no-repeat !important;
-  background-size: cover;
-  background-color: white;
-
-}
-.window-body {
-  text-align: center;
-}
-.status-bar {
-  margin: 0 3px;
-    box-shadow: inset 0 1px 2px grey;
-    padding: 4px 2px;
-    gap: 0;
-    display: flex;
-}
-.status-bar-field {
-
-    box-shadow: none;
-    padding: 1px 2px;
-    border-right: 1px solid rgba(208,206,191,.75);
-    border-left: 1px solid hsla(0,0%,100%,.75);
-    flex-grow: 1;
-    margin: 0;
-}
-.status-bar-field:first-of-type {
-  border-left: none;
 }

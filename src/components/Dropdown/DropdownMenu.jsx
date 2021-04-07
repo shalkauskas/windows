@@ -46,7 +46,7 @@ const useStyles = createUseStyles({
     border: '1px solid gray',
   },
   separator: {
-    height: `1px`,
+    height: `7px`,
     padding: `3px 1px`,
     backgroundColor: `rgba(0, 0, 0, 0.2)`,
     backgroundClip: `content-box`,

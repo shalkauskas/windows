@@ -67,6 +67,12 @@ export default function WeatherPrompt(props) {
   const handleChange = (event) => {
     setCity(event.target.value);
   };
+  const cancel = () => {
+    dispatch({
+      type: 'Weather',
+      payload: false,
+    });
+  };
   return (
     <div>
       <div className="window-body">
@@ -136,7 +142,7 @@ export default function WeatherPrompt(props) {
             <button className={classes.button} type="submit">
               Ok
             </button>
-            <button className={classes.button} type="submit">
+            <button className={classes.button} onClick={cancel}>
               Cancel
             </button>
           </div>
