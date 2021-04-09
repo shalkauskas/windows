@@ -12,6 +12,10 @@ import messenger from '../../../media/messenger.png';
 import help from '../../../media/help.png';
 import html from '../../../media/html.png';
 import go from '../../../media/go.png';
+import folders from '../../../media/folders.png';
+import folderType from '../../../media/folder-type.png';
+import folderDownloads from '../../../media/folder-downloads.png';
+import myComputer from '../../../media/my_computer.png';
 const assets = {
   back,
   forward,
@@ -27,5 +31,9 @@ const assets = {
   help,
   html,
   go,
+  folders,
+  folderType,
+  folderDownloads,
+  myComputer,
 };
 export default assets;

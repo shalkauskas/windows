@@ -1,7 +1,7 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import assets from './assets';
-import { GlobalContext } from '../../../App';
+import assets from '../Apps/InternetExplorer/assets';
+import { GlobalContext } from '../../App';
 const useStyles = createUseStyles({
   dropdown: {
     display: `flex`,
@@ -77,25 +77,17 @@ const useStyles = createUseStyles({
     zIndex: '5',
   },
 });
-export default function Controls() {
+export default function Controls(props) {
+  const { myComputer } = props;
   const classes = useStyles();
   const [state, dispatch] = React.useContext(GlobalContext);
   const submitted = state.InternetExplorer.submitted;
-  const home = () =>
-    submitted &&
-    dispatch({
-      type: 'InternetExplorerResults',
-      payload: {
-        submitted: false,
-      },
-    });
   return (
     <>
       <div className={classes.dropdown}>
         <div className={classes.dropdownColumn}>
           {/* column */}
           <div
-            onClick={home}
             className={`${classes.dropdownColumnItem} ${
               !submitted && classes.disabled
             }`}
@@ -109,16 +101,23 @@ export default function Controls() {
             <img src={assets.forward} alt="Forward" />
           </div>
           {/* column */}
-          <div className={classes.dropdownColumnItem}>
-            <img src={assets.stop} alt="Stop" />
-          </div>
+          {!myComputer && (
+            <>
+              <div className={classes.dropdownColumnItem}>
+                <img src={assets.stop} alt="Stop" />
+              </div>
+              <div className={classes.dropdownColumnItem}>
+                <img src={assets.refresh} alt="Refresh" />
+              </div>
+            </>
+          )}
+
           {/* column */}
           <div className={classes.dropdownColumnItem}>
-            <img src={assets.refresh} alt="Refresh" />
-          </div>
-          {/* column */}
-          <div className={classes.dropdownColumnItem} onClick={home}>
-            <img src={assets.home} alt="Home" />
+            <img
+              src={myComputer ? assets.folderDownloads : assets.home}
+              alt="Home"
+            />
           </div>
           <div className={classes.separator} />
           {/* column */}
@@ -127,29 +126,43 @@ export default function Controls() {
           </div>
           {/* column */}
           <div className={classes.dropdownColumnItem}>
-            <img src={assets.favorites} alt="Favorites" /> Favorites
+            <img
+              src={myComputer ? assets.folders : assets.favorites}
+              alt="Favorites"
+            />
+            {myComputer ? 'Folders' : 'Favorites'}
           </div>
           {/* column */}
-          <div className={classes.dropdownColumnItem}>
-            <img src={assets.recent} alt="Recent" />
-          </div>
+          {!myComputer && (
+            <div className={classes.dropdownColumnItem}>
+              <img src={assets.recent} alt="Recent" />
+            </div>
+          )}
+
           <div className={classes.separator} />
           {/* column */}
           <div className={classes.dropdownColumnItem}>
-            <img src={assets.mail} alt="mail" />
+            <img
+              src={myComputer ? assets.folderType : assets.mail}
+              alt="mail"
+            />
           </div>
           {/* column */}
-          <div className={classes.dropdownColumnItem}>
-            <img src={assets.printer} alt="printer" />
-          </div>
-          {/* column */}
-          <div className={classes.dropdownColumnItem}>
-            <img src={assets.help} alt="help" />
-          </div>
-          {/* column */}
-          <div className={classes.dropdownColumnItem}>
-            <img src={assets.messenger} alt="messenger" />
-          </div>
+          {!myComputer && (
+            <>
+              <div className={classes.dropdownColumnItem}>
+                <img src={assets.printer} alt="printer" />
+              </div>
+              {/* column */}
+              <div className={classes.dropdownColumnItem}>
+                <img src={assets.help} alt="help" />
+              </div>
+              {/* column */}
+              <div className={classes.dropdownColumnItem}>
+                <img src={assets.messenger} alt="messenger" />
+              </div>
+            </>
+          )}
         </div>
       </div>
       <div className={classes.address}>
@@ -167,13 +180,15 @@ export default function Controls() {
           style={{ flexGrow: 1 }}
         >
           <img
-            src={assets.html}
+            src={myComputer ? assets.myComputer : assets.html}
             alt="html"
             width="15px"
             className={classes.addressIcon}
           />
           <select className={classes.select}>
-            <option>{``}https://google.com</option>
+            <option>
+              {myComputer ? 'My Computer' : 'https://google.com'}
+            </option>
           </select>
         </div>
         <div className={classes.dropdownColumn}>

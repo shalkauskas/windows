@@ -1,7 +1,7 @@
 import React from 'react';
 import Window from '../../Window.jsx';
 import GiphyApp from './GiphyApp';
-import Controls from './Controls';
+import Controls from '../../Dropdown/Controls';
 import html from '../../../media/html.png';
 import internet from '../../../media/internet.png';
 export default function InternetExplorerApp() {

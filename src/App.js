@@ -1,7 +1,7 @@
 import React, { createContext } from 'react';
 import './App.css';
 import Desktop from './components/Desktop.jsx';
-import MyComputerApp from './components/Apps/MyComputer.jsx';
+import MyComputerApp from './components/Apps/MyComputer/MyComputer.jsx';
 import InternetExplorerApp from './components/Apps/InternetExplorer/InternetExplorer.jsx';
 import ToDoApp from './components/Apps/ToDoApp/ToDoApp.jsx';
 import WeatherApp from './components/Apps/Weather/WeatherApp.jsx';
