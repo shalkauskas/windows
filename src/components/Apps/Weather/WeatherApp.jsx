@@ -8,7 +8,7 @@ export default function WeatherApp() {
   const [state] = React.useContext(GlobalContext);
   return (
     <>
-      {state.Weather.error.length < 1 ? (
+      {state.Weather.submitted ? (
         <WeatherResult />
       ) : (
         <Window

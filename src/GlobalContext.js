@@ -47,10 +47,11 @@ export const reduce = (state, action) => {
       return {
         ...state,
         Weather: {
+          ...state.Weather,
           appOpen: true,
-          error: action.payload.error || '',
-          result: action.payload.result || {},
-          units: action.payload.units || 'imperial',
+          submitted: action.payload.submitted,
+          result: action.payload.result,
+          units: action.payload.units,
         },
       };
     case 'Paint':
@@ -99,8 +100,16 @@ export const reduce = (state, action) => {
       return {
         ...state,
         Error: {
-          appOpen: action.payload.appOpen,
+          ...state.Error,
+          appOpen: action.payload,
+        },
+      };
+    case 'ErrorCustom':
+      return {
+        ...state,
+        Error: {
           error: action.payload.error,
+          appOpen: action.payload.appOpen,
         },
       };
     default:
@@ -129,6 +138,7 @@ export const initialState = {
     appOpen: false,
     error: '',
     result: {},
+    submitted: false,
     units: `imperial`,
   },
   Paint: { appOpen: false, error: '' },
@@ -136,5 +146,5 @@ export const initialState = {
   CommandLine: { appOpen: false, error: `` },
   ActiveApp: ``,
   StartMenu: { open: false },
-  Error: { appOpen: false, error: `` },
+  Error: { appOpen: false, error: `Application not found` },
 };

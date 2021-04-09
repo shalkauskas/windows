@@ -1,4 +1,3 @@
-import expand from '../../../media/expand.png';
 import documents from '../../../media/documents.png';
 import bin from '../../../media/bin.png';
 import porthole from '../../../media/porthole.png';

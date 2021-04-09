@@ -17,6 +17,7 @@ const useStyles = createUseStyles({
   },
   errorContent: {
     display: 'flex',
+    alignItems: 'center',
   },
   button: {
     margin: '0.5rem',
@@ -40,7 +41,7 @@ export default function Error(props) {
     >
       <div className={`${classes.windowBody}`}>
         <div className={classes.errorContent}>
-          <img src={error} alt="Error" width="30px" height="30px" />
+          <img src={error} alt="Error" width="40px" height="40px" />
           <p>{props.children || state.Error.error}</p>
         </div>
         <div className={classes.button}>

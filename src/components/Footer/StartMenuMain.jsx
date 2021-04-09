@@ -73,7 +73,7 @@ export default function StartMenuMain() {
   const handleError = () => {
     dispatch({
       type: `Error`,
-      payload: { appOpen: true, error: 'Application not found' },
+      payload: true,
     });
     dispatch({ type: `StartMenu`, payload: false });
   };

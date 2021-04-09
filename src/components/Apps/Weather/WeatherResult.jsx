@@ -34,13 +34,18 @@ const useStyles = createUseStyles({
     justifyContent: 'space-evenly',
   },
   closeButton: {
-    position: 'absolute',
-    right: 10,
-    top: 10,
     cursor: 'pointer',
     '&:hover': {
       opacity: 0.5,
     },
+  },
+  controls: {
+    position: 'absolute',
+    right: 10,
+    top: 10,
+    width: '60px',
+    display: 'flex',
+    justifyContent: 'space-evenly',
   },
 });
 function WeatherResult(props) {
@@ -61,6 +66,12 @@ function WeatherResult(props) {
   const handleClose = () => {
     dispatch({ type: `Weather`, payload: false });
   };
+  const handleReset = () => {
+    dispatch({
+      type: 'WeatherResult',
+      payload: { sumbitted: false },
+    });
+  };
   return (
     <>
       <Rnd
@@ -74,9 +85,21 @@ function WeatherResult(props) {
         }}
       >
         <div className={classes.wrapper}>
-          <span className={classes.closeButton} onClick={handleClose}>
-            &#x2715;
-          </span>
+          <div className={classes.controls}>
+            <span
+              onClick={handleReset}
+              className={classes.closeButton}
+            >
+              &#9998;
+            </span>
+            <span
+              onClick={handleClose}
+              className={classes.closeButton}
+            >
+              &#x2715;
+            </span>
+          </div>
+
           <div className={classes.main}>
             <div
               className={classes.main}

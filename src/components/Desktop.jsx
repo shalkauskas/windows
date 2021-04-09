@@ -12,17 +12,17 @@ export default function Desktop() {
       <AppItem
         icon={myComputer}
         name="My computer"
-        case="MyComputer"
+        app="MyComputer"
       />
       <AppItem
         icon={internetExplorer}
         name="Internet explorer"
-        case="InternetExplorer"
+        app="InternetExplorer"
       />
-      <AppItem icon={ToDoIcon} name="Task Manager" case="ToDoApp" />
-      <AppItem icon={weatherIcon} name="Weather" case="Weather" />
-      <AppItem icon={paint} name="Paint" case="Paint" />
-      <AppItem icon={notepad} name="Notepad" case="Notepad" />
+      <AppItem icon={ToDoIcon} name="Task Manager" app="ToDoApp" />
+      <AppItem icon={weatherIcon} name="Weather" app="Weather" />
+      <AppItem icon={paint} name="Paint" app="Paint" />
+      <AppItem icon={notepad} name="Notepad" app="Notepad" />
     </div>
   );
 }

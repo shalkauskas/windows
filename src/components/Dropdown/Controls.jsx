@@ -20,7 +20,7 @@ const useStyles = createUseStyles({
     borderTop: `1px solid rgba(255, 255, 255, 0.7)`,
     boxShadow: `rgb(45 45 45) 0px -1px 1px 0px inset`,
     margin: `0`,
-    '& $select': {
+    '& select': {
       width: '100%',
       paddingLeft: '20px',
     },
@@ -80,7 +80,7 @@ const useStyles = createUseStyles({
 export default function Controls(props) {
   const { myComputer } = props;
   const classes = useStyles();
-  const [state, dispatch] = React.useContext(GlobalContext);
+  const [state] = React.useContext(GlobalContext);
   const submitted = state.InternetExplorer.submitted;
   return (
     <>
