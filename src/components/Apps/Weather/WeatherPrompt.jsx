@@ -42,7 +42,7 @@ export default function WeatherPrompt(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const key = process.env.REACT_APP_WEATHER_API_KEY;
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}&units=${units}`;
+    const url = `https://cors-anywhere-is.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}&units=${units}`;
     setCity('');
     fetch(url)
       .then((response) => {
