@@ -5,6 +5,7 @@ import StartMenu from './StartMenu';
 import { GlobalContext } from '../../App';
 
 import assets from './assets';
+import StatusBar from './StatusBar';
 const useStyles = createUseStyles({
   footer: {
     position: `fixed`,
@@ -35,6 +36,7 @@ const useStyles = createUseStyles({
   },
   startWrapper: {
     position: 'relative',
+    marginRight: '10px',
   },
   notifications: {
     display: 'flex',
@@ -89,6 +91,7 @@ export default function Footer() {
           />
           <StartMenu />
         </div>
+        <StatusBar />
       </div>
 
       <div className={classes.rightSide}>

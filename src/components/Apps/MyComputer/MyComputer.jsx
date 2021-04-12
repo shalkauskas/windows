@@ -39,7 +39,7 @@ export default function MyComputerApp() {
     <Window
       windowTitle="My Computer"
       icon={myComputer}
-      case="MyComputer"
+      app="MyComputer"
       margin={'0 3px'}
       width={800}
       height={600}

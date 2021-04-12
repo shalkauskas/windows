@@ -4,8 +4,8 @@ export const reduce = (state, action) => {
       return {
         ...state,
         MyComputer: {
+          ...state.MyComputer,
           appOpen: action.payload,
-          error: '',
         },
       };
     case 'InternetExplorer':
@@ -75,6 +75,22 @@ export const reduce = (state, action) => {
         ...state,
         ActiveApp: action.payload,
       };
+    case 'StatusBarAdd':
+      const StatusBarAdd = state.StatusBar.filter(
+        (item) => item !== action.payload,
+      );
+      return {
+        ...state,
+        StatusBar: [...StatusBarAdd, action.payload],
+      };
+    case 'StatusBarRemove':
+      const StatusBarRemove = state.StatusBar.filter(
+        (item) => item !== action.payload,
+      );
+      return {
+        ...state,
+        StatusBar: [...StatusBarRemove],
+      };
     case 'WindowsMediaPlayer':
       return {
         ...state,
@@ -119,32 +135,31 @@ export const reduce = (state, action) => {
 export const initialState = {
   MyComputer: {
     appOpen: false,
-    error: '',
   },
   Notepad: {
     appOpen: false,
-    error: '',
   },
   InternetExplorer: {
     appOpen: false,
-    error: '',
+
     results: [],
     query: ``,
     pagination: {},
     submitted: false,
   },
-  ToDoApp: { appOpen: false, error: '' },
+  ToDoApp: { appOpen: false },
   Weather: {
     appOpen: false,
-    error: '',
+
     result: {},
     submitted: false,
     units: `imperial`,
   },
-  Paint: { appOpen: false, error: '' },
-  WindowsMediaPlayer: { appOpen: false, error: `` },
-  CommandLine: { appOpen: false, error: `` },
+  Paint: { appOpen: false },
+  WindowsMediaPlayer: { appOpen: false },
+  CommandLine: { appOpen: false },
   ActiveApp: ``,
+  StatusBar: [],
   StartMenu: { open: false },
   Error: { appOpen: false, error: `Application not found` },
 };

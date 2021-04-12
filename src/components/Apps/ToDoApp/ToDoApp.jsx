@@ -101,7 +101,7 @@ export default function ToDoApp() {
     <Window
       windowTitle="ToDo App"
       icon={ToDoIcon}
-      case="ToDoApp"
+      app="ToDoApp"
       height={600}
       statusBar
       statusBarField1={

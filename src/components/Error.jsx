@@ -36,7 +36,7 @@ export default function Error(props) {
       width={300}
       height={150}
       icon={error}
-      case="Error"
+      app="Error"
       windowTitle={props.title || 'C:/ Not Found!'}
     >
       <div className={`${classes.windowBody}`}>

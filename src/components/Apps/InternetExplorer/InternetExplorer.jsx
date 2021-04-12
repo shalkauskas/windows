@@ -32,7 +32,7 @@ export default function InternetExplorerApp() {
     <Window
       windowTitle="Internet Explorer"
       icon={html}
-      case="InternetExplorer"
+      app="InternetExplorer"
       width="75vw"
       height="75vh"
       margin="3px"

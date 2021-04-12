@@ -63,6 +63,7 @@ export default function AppItem(props) {
     link
       ? openInNewTab(link)
       : dispatch({ type: app, payload: true });
+    dispatch({ type: `StatusBarAdd`, payload: app });
   };
   return (
     <Draggable

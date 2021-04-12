@@ -68,6 +68,7 @@ export default function StartMenuMain() {
   const [, dispatch] = React.useContext(GlobalContext);
   const handleOpen = (app) => {
     dispatch({ type: app, payload: true });
+    dispatch({ type: `StatusBarAdd`, payload: app });
     dispatch({ type: `StartMenu`, payload: false });
   };
   const handleError = () => {
@@ -84,7 +85,7 @@ export default function StartMenuMain() {
           className={classes.item}
           onClick={() => handleOpen(`InternetExplorer`)}
         >
-          <img src={assets.internetExplorer} alt="icon" />
+          <img src={assets.InternetExplorer} alt="icon" />
           <div
             style={{
               display: 'flex',
@@ -129,28 +130,28 @@ export default function StartMenuMain() {
           className={classes.item}
           onClick={() => handleOpen(`ToDoApp`)}
         >
-          <img src={assets.todoApp} alt="icon" />
+          <img src={assets.ToDoApp} alt="icon" />
           Task Manager
         </div>
         <div
           className={classes.item}
           onClick={() => handleOpen(`Weather`)}
         >
-          <img src={assets.weatherIcon} alt="icon" />
+          <img src={assets.Weather} alt="icon" />
           Weather
         </div>
         <div
           className={classes.item}
           onClick={() => handleOpen(`Paint`)}
         >
-          <img src={assets.paint} alt="icon" />
+          <img src={assets.Paint} alt="icon" />
           Paint
         </div>
         <div
           className={classes.item}
           onClick={() => handleOpen(`Notepad`)}
         >
-          <img src={assets.notepad} alt="icon" />
+          <img src={assets.Notepad} alt="icon" />
           Notepad
         </div>
         <div className={classes.item} onClick={() => handleError()}>
@@ -165,7 +166,7 @@ export default function StartMenuMain() {
           className={classes.item}
           onClick={() => handleOpen(`WindowsMediaPlayer`)}
         >
-          <img src={assets.player} alt="icon" />
+          <img src={assets.WindowsMediaPlayer} alt="icon" />
           Windows Media Player
         </div>
         <div className={classes.item} onClick={() => handleError()}>
@@ -189,7 +190,7 @@ export default function StartMenuMain() {
           className={classes.item}
           onClick={() => handleOpen(`MyComputer`)}
         >
-          <img src={assets.myComputer} alt="icon" />{' '}
+          <img src={assets.MyComputer} alt="icon" />{' '}
           <b>My Computer</b>
         </div>
         <div className={classes.separator} />
@@ -234,7 +235,7 @@ export default function StartMenuMain() {
           className={classes.item}
           onClick={() => handleOpen(`CommandLine`)}
         >
-          <img src={assets.run} alt="icon" />
+          <img src={assets.CommandLine} alt="icon" />
           Run...
         </div>
       </div>

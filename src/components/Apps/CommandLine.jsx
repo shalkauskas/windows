@@ -1,6 +1,7 @@
 import React from 'react';
-import Window from './Window.jsx';
+import Window from '../../components/Window.jsx';
 import { createUseStyles } from 'react-jss';
+import run from '../../media/run.png';
 const useStyles = createUseStyles({
   pre: {
     width: '100%',
@@ -29,10 +30,11 @@ export default function CommandLine() {
   return (
     <Window
       windowTitle="Command Prompt"
-      case="CommandLine"
+      app="CommandLine"
       width={`400px`}
       height={`300px`}
       margin={`0 -5px -8px 0`}
+      icon={run}
       noDropdown
     >
       <pre className={classes.pre}>

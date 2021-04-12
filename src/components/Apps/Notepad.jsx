@@ -17,7 +17,7 @@ export default function Notepad() {
     <Window
       windowTitle="Notepad"
       icon={notepad}
-      case="Notepad"
+      app="Notepad"
       margin={3}
     >
       <textarea

@@ -14,7 +14,7 @@ export default function WeatherApp() {
         <Window
           windowTitle="Weather"
           icon={weatherIcon}
-          case="Weather"
+          app="Weather"
           width={`400px`}
           height={`300px`}
           noDropdown

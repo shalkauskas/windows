@@ -31,7 +31,7 @@ export default function WindowsMediaPlayer() {
     <Window
       icon={player}
       windowTitle="Windows Media Player"
-      case="WindowsMediaPlayer"
+      app="WindowsMediaPlayer"
       lockAspectRatio
       disableResizing
       margin={`0px 3px`}

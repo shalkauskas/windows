@@ -49,18 +49,34 @@ const useStyles = createUseStyles({
 });
 export default function Window(props) {
   const classes = useStyles();
+  const {
+    app,
+    lockAspectRatio,
+    disableResizing,
+    width,
+    height,
+    margin,
+    windowTitle,
+    icon,
+    children,
+    statusBar,
+    statusBarField1,
+    statusBarField2,
+    statusBarField3,
+  } = props;
   const [state, dispatch] = React.useContext(GlobalContext);
   // const [maximize, setMaximize] = React.useState(false);
   const handleClose = () => {
-    dispatch({ type: props.case, payload: false });
+    dispatch({ type: app, payload: false });
+    dispatch({ type: 'StatusBarRemove', payload: app });
   };
   const setActiveApp = () => {
-    dispatch({ type: `ActiveApp`, payload: props.case });
+    dispatch({ type: `ActiveApp`, payload: app });
   };
   // @todo props.open?
   React.useEffect(() => {
-    dispatch({ type: `ActiveApp`, payload: props.case });
-  }, [dispatch, props.case, props.open]);
+    dispatch({ type: `ActiveApp`, payload: app });
+  }, [dispatch, app, props.open]);
   // const handleMaximize = () => {
   //   setMaximize(!maximize);
   // };
@@ -71,12 +87,12 @@ export default function Window(props) {
     //   }
     // >
     <Rnd
-      lockAspectRatio={props.lockAspectRatio && true}
-      enableResizing={props.disableResizing && false}
+      lockAspectRatio={lockAspectRatio && true}
+      enableResizing={disableResizing && false}
       onDrag={setActiveApp}
       style={{
         display: 'block',
-        zIndex: state.ActiveApp === props.case && 30,
+        zIndex: state.ActiveApp === app && 30,
       }}
       bounds={'body'}
       dragHandleClassName={`title-bar`}
@@ -84,14 +100,14 @@ export default function Window(props) {
       minHeight={150}
       // position={{to do}}
       // size={{
-      //   height: maximize ? `100%` : props.height,
-      //   width: maximize ? `100%` : props.width,
+      //   height: maximize ? `100%` : height,
+      //   width: maximize ? `100%` : width,
       // }}
       default={{
         x: 100,
         y: 100,
-        width: props.width ? props.width : `400px`,
-        height: props.height ? props.height : `400px`,
+        width: width ? width : `400px`,
+        height: height ? height : `400px`,
       }}
     >
       {/* window wrapper */}
@@ -100,7 +116,7 @@ export default function Window(props) {
         className={`${classes.window} window`}
         style={{
           boxShadow:
-            state.ActiveApp !== props.case &&
+            state.ActiveApp !== app &&
             `rgb(0, 19, 140, 0.3) -1px -1px inset, rgb(8, 49, 217, 0.3) 1px 1px 0px inset, rgb(0, 30, 160, 0.3)
            -2px -2px inset, rgb(22, 106, 238, 0.3) 2px 2px inset, rgb(0, 59, 218, 0.3) -3px -3px inset, rgb(8, 85, 221, 0.3) 3px 3px inset`,
         }}
@@ -110,14 +126,12 @@ export default function Window(props) {
           onClickCapture={setActiveApp}
           className="title-bar"
           style={{
-            opacity: state.ActiveApp === props.case ? 1 : 0.7,
+            opacity: state.ActiveApp === app ? 1 : 0.7,
           }}
         >
           <div className={`${classes.title} title-bar-text`}>
-            {props.icon && (
-              <img src={props.icon} alt="icon" width="15px" />
-            )}
-            {props.windowTitle}
+            {icon && <img src={icon} alt="icon" width="15px" />}
+            {windowTitle}
           </div>
           <div className="title-bar-controls">
             {/* <button
@@ -135,22 +149,22 @@ export default function Window(props) {
           onClickCapture={setActiveApp}
           className={`${classes.windowBody} window-body`}
           style={{
-            margin: props.margin && props.margin,
+            margin: margin && margin,
           }}
         >
-          {props.children}
+          {children}
         </div>
         {/* status bar */}
-        {props.statusBar && (
+        {statusBar && (
           <div className={classes.statusBar}>
             <div className={classes.statusBarField}>
-              {props.statusBarField1}
+              {statusBarField1}
             </div>
             <div className={classes.statusBarField}>
-              {props.statusBarField2}
+              {statusBarField2}
             </div>
             <div className={classes.statusBarField}>
-              {props.statusBarField3}
+              {statusBarField3}
             </div>
           </div>
         )}

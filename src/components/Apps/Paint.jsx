@@ -6,7 +6,7 @@ export default function Paint() {
     <Window
       windowTitle="MS Paint"
       icon={paint}
-      case="Paint"
+      app="Paint"
       width={1000}
       height={600}
       noDropdown
