@@ -74,6 +74,7 @@ export default function ToDoApp() {
   const tabPanel = tabState.tabs.map((tab) => {
     return (
       <article
+        style={{ flexGrow: 1 }}
         role="tabpanel"
         id={tab.id}
         key={tab.id}

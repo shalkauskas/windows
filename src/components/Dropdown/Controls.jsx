@@ -80,14 +80,21 @@ const useStyles = createUseStyles({
 export default function Controls(props) {
   const { myComputer } = props;
   const classes = useStyles();
-  const [state] = React.useContext(GlobalContext);
+  const [state, dispatch] = React.useContext(GlobalContext);
   const submitted = state.InternetExplorer.submitted;
+  const handleReset = () => {
+    state.ActiveApp === 'InternetExplorer' &&
+      dispatch({
+        type: 'InternetExplorerReset',
+      });
+  };
   return (
     <>
       <div className={classes.dropdown}>
         <div className={classes.dropdownColumn}>
           {/* column */}
           <div
+            onClick={handleReset}
             className={`${classes.dropdownColumnItem} ${
               !submitted && classes.disabled
             }`}
@@ -113,7 +120,10 @@ export default function Controls(props) {
           )}
 
           {/* column */}
-          <div className={classes.dropdownColumnItem}>
+          <div
+            className={classes.dropdownColumnItem}
+            onClick={handleReset}
+          >
             <img
               src={myComputer ? assets.folderDownloads : assets.home}
               alt="Home"

@@ -1,7 +1,36 @@
 import React, { useState } from 'react';
 import ToDoItem from './ToDoItem';
-import './ToDoList.css';
-function ToDoList(props) {
+import { createUseStyles } from 'react-jss';
+const useStyles = createUseStyles({
+  todoContainer: {
+    width: `100%`,
+    height: `100%`,
+    minWidth: `250px`,
+    background: `#f1f5f8`,
+    backgroundImage: `radial-gradient(#bfc0c1 7.2%, transparent 0)`,
+    backgroundSize: `25px 25px`,
+    borderRadius: `20px`,
+    boxShadow: `4px 3px 7px 2px #00000040`,
+    padding: `1rem`,
+    boxSizing: `border-box`,
+    '& div': {
+      marginBottom: '1rem',
+    },
+  },
+  input: {
+    marginRight: '0.5rem',
+    width: '50%',
+    maxWidth: '300px',
+    boxShadow: 'inset 0 0 1px #000000',
+  },
+  ul: {
+    listStyle: 'none',
+    paddingInlineStart: 0,
+    margin: 0,
+  },
+});
+export default function ToDoList() {
+  const classes = useStyles();
   const [inputText, setInputText] = useState('');
   const [items, setItems] = useState([]);
 
@@ -18,36 +47,18 @@ function ToDoList(props) {
   }
 
   return (
-    <div className="todo-container">
-      <div style={{ marginBottom: '1rem' }}>
+    <div className={classes.todoContainer}>
+      <div>
         <input
-          style={{
-            marginRight: '0.5rem',
-            width: '50%',
-            maxWidth: '300px',
-            boxShadow: 'inset 0 0 1px #000000',
-          }}
+          className={classes.input}
           onChange={handleChange}
           type="text"
-          // id="input"
           value={inputText}
         />
-        <button
-          // id="button"
-          onClick={addItem}
-        >
-          Add
-          {/* <span id="span"></span> */}
-        </button>
+        <button onClick={addItem}>Add</button>
       </div>
       <fieldset>
-        <ul
-          style={{
-            listStyle: 'none',
-            paddingInlineStart: 0,
-            margin: 0,
-          }}
-        >
+        <ul className={classes.ul}>
           {items.map((todoItem, index) => (
             <ToDoItem text={todoItem} key={index} id={index} />
           ))}
@@ -56,5 +67,3 @@ function ToDoList(props) {
     </div>
   );
 }
-
-export default ToDoList;

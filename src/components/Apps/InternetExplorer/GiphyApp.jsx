@@ -10,7 +10,7 @@ const useStyles = createUseStyles({
     alignItems: 'center',
     backgroundColor: `white`,
     height: `100%`,
-    overflow: 'auto',
+    overflowX: 'hidden',
   },
 });
 export default function GiphyApp() {

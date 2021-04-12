@@ -9,9 +9,13 @@ export default function Search(props) {
       flexDirection: props.mini ? `row` : 'column',
       justifyContent: props.mini ? `flex-start` : 'center',
       alignItems: 'center',
+      '& img': {
+        cursor: 'pointer',
+      },
     },
     searchMain: {
       width: props.mini ? `50%` : '100%',
+      maxWidth: '500px',
     },
     optionsGroup: {
       width: `100%`,
@@ -24,10 +28,12 @@ export default function Search(props) {
       '& a': {
         cursor: 'pointer',
         textDecoration: 'underline',
+        margin: '0 7px',
       },
     },
     form: {
       display: 'flex',
+      minWidth: '400px',
       flexDirection: props.mini ? 'row' : 'column',
       alignItems: 'center',
       padding: props.mini && '0 1rem',
@@ -56,7 +62,7 @@ export default function Search(props) {
         return response.json();
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         dispatch({
           type: 'InternetExplorerResults',
           payload: {
@@ -71,9 +77,15 @@ export default function Search(props) {
   const handleChange = (e) => {
     setSearchText(e.target.value);
   };
+  const handleReset = () => {
+    dispatch({
+      type: 'InternetExplorerReset',
+    });
+  };
   return (
     <div className={classes.searchWrapper}>
       <img
+        onClick={handleReset}
         src={googleLogo}
         alt="logo"
         width={props.mini ? '200px' : '300px'}

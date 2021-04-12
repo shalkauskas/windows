@@ -1,3 +1,35 @@
+export const initialState = {
+  MyComputer: {
+    appOpen: false,
+  },
+  Notepad: {
+    appOpen: false,
+  },
+  InternetExplorer: {
+    appOpen: false,
+
+    results: [],
+    query: ``,
+    pagination: {},
+    submitted: false,
+  },
+  ToDoApp: { appOpen: false },
+  Weather: {
+    appOpen: false,
+
+    result: {},
+    submitted: false,
+    units: `imperial`,
+  },
+  Paint: { appOpen: false },
+  WindowsMediaPlayer: { appOpen: false },
+  CommandLine: { appOpen: false },
+  ActiveApp: ``,
+  StatusBar: [],
+  StartMenu: { open: false },
+  Error: { appOpen: false, error: `Application not found` },
+};
+
 export const reduce = (state, action) => {
   switch (action.type) {
     case 'MyComputer':
@@ -25,6 +57,14 @@ export const reduce = (state, action) => {
           query: action.payload.query,
           pagination: action.payload.pagination,
           submitted: action.payload.submitted,
+        },
+      };
+    case 'InternetExplorerReset':
+      return {
+        ...state,
+        InternetExplorer: {
+          ...initialState.InternetExplorer,
+          appOpen: true,
         },
       };
     case 'ToDoApp':
@@ -131,35 +171,4 @@ export const reduce = (state, action) => {
     default:
       return state;
   }
-};
-export const initialState = {
-  MyComputer: {
-    appOpen: false,
-  },
-  Notepad: {
-    appOpen: false,
-  },
-  InternetExplorer: {
-    appOpen: false,
-
-    results: [],
-    query: ``,
-    pagination: {},
-    submitted: false,
-  },
-  ToDoApp: { appOpen: false },
-  Weather: {
-    appOpen: false,
-
-    result: {},
-    submitted: false,
-    units: `imperial`,
-  },
-  Paint: { appOpen: false },
-  WindowsMediaPlayer: { appOpen: false },
-  CommandLine: { appOpen: false },
-  ActiveApp: ``,
-  StatusBar: [],
-  StartMenu: { open: false },
-  Error: { appOpen: false, error: `Application not found` },
 };

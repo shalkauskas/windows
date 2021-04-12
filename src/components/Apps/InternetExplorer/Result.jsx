@@ -12,7 +12,6 @@ const useStyles = createUseStyles({
   },
   strip: {
     backgroundColor: '#E6ECFA',
-
     padding: '0.2rem 0.5rem',
     display: 'flex',
     justifyContent: 'space-between',
