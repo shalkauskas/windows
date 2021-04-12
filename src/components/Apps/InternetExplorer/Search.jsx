@@ -49,7 +49,7 @@ export default function Search(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const key = process.env.REACT_APP_GIPHY_API_KEY;
-    const url = `http://api.giphy.com/v1/gifs/search?api_key=${key}&q=${searchText}`;
+    const url = `https://cors-anywhere-is.herokuapp.com/http://api.giphy.com/v1/gifs/search?api_key=${key}&q=${searchText}`;
 
     fetch(url)
       .then((response) => {
